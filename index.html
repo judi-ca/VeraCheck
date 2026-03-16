@@ -6,7 +6,8 @@
     <meta name="author" content="Yacinthe Adi TINDANAHIRE">
     <meta name="description" content="Une plateforme qui permet de vérifier la véracité des informations">
     <meta name="theme-color" content="#1a1a2e">
-    <link rel="shortcut icon" href="/images/ver.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/veraCheck.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Style css et titre -->
     <link rel="stylesheet" href="/css/style.css">
     <title>VeraCheck - Outil de vérification de news</title>
@@ -15,7 +16,7 @@
      <!-- Debut du header -->
       <header>
         <div class="left">
-            <img src="/images/logoVeraCheck.jpeg " alt="Logo VeraCheck">
+            <img src="/images/logoVera2Check.jpeg " alt="Logo VeraCheck">
                 <h1><span>Vera</span>Check</h1>
         </div>
         <div class="rigth">
@@ -37,7 +38,7 @@
 
         <div class="hero-container">
             <div class="logo">
-                <img src="/images/illustration2.jpeg" alt="Logo VeraCheck">
+                <img src="/images/logoVera2Check.jpeg" alt="Logo VeraCheck">
                 <h1><span>Vera</span>Check</h1>
             </div>
             <div class="description"> 
@@ -52,7 +53,10 @@
         </div>
 
         <div class="btn">
-           <button class="btn-primary"><a href="#">Vérifier une information</a></button>
+           <button class="btn-primary">
+            <a href="#">Vérifier une information</a>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
         </div>
 
         <div class="line"><hr></div>
@@ -69,54 +73,89 @@
 
                 <div class="card">
                     <div class="card-head">
+                        <i class="fa-solid fa-magnifying-glass"></i>    
                         <h4>Vérifier</h4>
                     </div>
                     <div class="hero-content">
                         <p>Vérifiez rapidement une information dont vous doutez de sa véracité.</p>
                     </div>
                     <div class="card-end">
-                        <a href="">Commencer</a>
+                        <a href="">Accéder</a>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-head">
+                        <i class="fa-solid fa-book"></i>
                         <h4>Leçons</h4>
                     </div>
                     <div class="hero-content">
                         <p>Apprenez à distinguer les fausses informations des vraies grâce à nos leçons adaptées.</p>
                     </div>
                     <div class="card-end">
-                        <a href="">Commencer</a>
+                        <a href="">Accéder</a>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-head">
+                        <i class="fas fa-cogs"></i>
                         <h4>Simulations</h4>
                     </div>
                     <div class="hero-content">
                         <p>Mise à l'épreuve après avoir appris a reconnaitre des fakes news.</p>
                     </div>
                     <div class="card-end">
-                        <a href="">Commencer</a>
+                        <a href="">Accéder</a>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-head">
+                        <i class="fa-solid fa-circle-info"></i>
                         <h4>A propos</h4>
                     </div>
                     <div class="hero-content">
                         <p>Découvrez notre équipe, nos motivations et notre philosophie.</p>
                     </div>
                     <div class="card-end">
-                        <a href="">Commencer</a>
+                        <a href="">Accéder</a>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </div>
 
             </div>
 
+       </section>
+
+       <!-- Debut de la section "Comment ca fonctionne" -->
+
+       <section class="function">
+        <h2><span>Comment</span> ça fonctionne ?</h2>
+        <p class="function-description">VeraCheck utilise une combinaison de techniques d'analyse de texte, de vérification de faits et d'apprentissage automatique pour évaluer la véracité des informations. Voici comment cela fonctionne :</p>
+
+        <div class="function-steps">
+            <div class="step">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>Analyse de texte</h3>
+                <p>VeraCheck analyse le texte soumis en utilisant des algorithmes avancés de traitement du langage naturel pour comprendre le contexte et les affirmations faites.</p>
+            </div>
+
+            <div class="step">
+                <i class="fa-solid fa-check"></i>
+                <h3>Vérification de faits</h3>
+                <p>VeraCheck compare les affirmations du texte avec une base de données de sources fiables et vérifiées pour déterminer leur véracité.</p>
+            </div>
+
+            <div class="step">
+                <i class="fa-solid fa-robot"></i>
+                <h3>Apprentissage automatique</h3>
+                <p>VeraCheck utilise des modèles d'apprentissage automatique pour améliorer continuellement sa capacité à détecter les informations fausses ou trompeuses.</p>
+            </div>
+        </div>
        </section>
 </body>
 </html>
