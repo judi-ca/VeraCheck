@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VeraCheck — Sections</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg-deep:     #030b18;
+    --bg-mid:      #071428;
+    --neon:        #00d4ff;
+    --neon-dim:    #0099cc;
+    --neon-glow:   rgba(0,212,255,0.18);
+    --neon-glow2:  rgba(0,212,255,0.06);
+    --glass:       rgba(255,255,255,0.035);
+    --glass-border:rgba(0,212,255,0.12);
+    --text-hi:     #e8f4ff;
+    --text-mid:    #7db3cc;
+    --text-lo:     #3a6070;
+    --font-display:'Syne', sans-serif;
+    --font-body:   'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-hi);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Noise overlay ─────────────────────────────────── */
+  body::before {
+    content:'';
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.022;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     HOW IT WORKS
+  ══════════════════════════════════════════════════════ */
+  .hiw {
+    position:relative; z-index:1;
+    padding: 120px 5vw 130px;
+    overflow: hidden;
+  }
+
+  .hiw__blob {
+    position:absolute; border-radius:50%; filter:blur(100px); pointer-events:none;
+  }
+  .hiw__blob--1 {
+    width:420px; height:420px;
+    background: radial-gradient(circle, rgba(0,180,255,0.09) 0%, transparent 70%);
+    top:-80px; left:-60px;
+  }
+  .hiw__blob--2 {
+    width:300px; height:300px;
+    background: radial-gradient(circle, rgba(0,80,180,0.1) 0%, transparent 70%);
+    bottom:0; right:5%;
+  }
+
+  .hiw__label {
+    display: inline-flex; align-items:center; gap: 10px;
+    font-family: var(--font-display);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--neon); margin-bottom: 22px;
+  }
+  .hiw__label::before {
+    content:'';
+    display:block; width:28px; height:1px;
+    background: var(--neon);
+    box-shadow: 0 0 8px var(--neon);
+  }
+
+  .hiw__title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800; line-height: 1.15;
+    color: var(--text-hi);
+    margin-bottom: 72px;
+    max-width: 520px;
+  }
+  .hiw__title em {
+    font-style:normal;
+    color: var(--neon);
+    text-shadow: 0 0 30px rgba(0,212,255,0.45);
+  }
+
+  /* Steps row */
+  .hiw__steps {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  /* Connector */
+  .hiw__connector {
+    display: flex; align-items: center; justify-content: center;
+    padding-top: 36px;
+    width: 100%;
+  }
+  .hiw__connector-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,212,255,0.35), rgba(0,212,255,0.08));
+    position: relative;
+    box-shadow: 0 0 6px rgba(0,212,255,0.2);
+  }
+  .hiw__connector-dot {
+    position:absolute; top:50%; left:50%;
+    transform: translate(-50%,-50%);
+    width:6px; height:6px; border-radius:50%;
+    background: var(--neon);
+    box-shadow: 0 0 10px var(--neon), 0 0 20px rgba(0,212,255,0.5);
+  }
+
+  .hiw__step {
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    padding: 0 16px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .hiw__step:nth-child(1) { animation-delay: 0.1s; }
+  .hiw__step:nth-child(3) { animation-delay: 0.25s; }
+  .hiw__step:nth-child(5) { animation-delay: 0.4s; }
+
+  .hiw__step-num {
+    font-family: var(--font-display);
+    font-size: 11px; letter-spacing: 0.18em;
+    color: var(--neon-dim); margin-bottom: 20px;
+    opacity: 0.7;
+  }
+
+  .hiw__icon-wrap {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    display: flex; align-items:center; justify-content:center;
+    margin-bottom: 24px;
+    position:relative;
+    box-shadow: 0 0 0 1px transparent, 0 8px 32px rgba(0,0,0,0.3);
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  .hiw__icon-wrap::before {
+    content:'';
+    position:absolute; inset:-1px;
+    border-radius: 21px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.2) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .hiw__step:hover .hiw__icon-wrap {
+    box-shadow: 0 0 0 1px rgba(0,212,255,0.25), 0 0 30px rgba(0,212,255,0.15), 0 8px 32px rgba(0,0,0,0.3);
+    border-color: rgba(0,212,255,0.3);
+  }
+
+  .hiw__icon { width:28px; height:28px; color: var(--neon); }
+
+  .hiw__step-title {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 700;
+    color: var(--text-hi);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .hiw__step-desc {
+    font-size: 14px; line-height: 1.7;
+    color: var(--text-mid);
+    max-width: 220px;
+  }
+
+  /* Responsive steps */
+  @media (max-width: 768px) {
+    .hiw__steps {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .hiw__connector {
+      padding: 4px 0;
+      width: 100%;
+      height: 48px;
+    }
+    .hiw__connector-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(180deg, rgba(0,212,255,0.35), rgba(0,212,255,0.08));
+      margin: 0 auto;
+    }
+    .hiw__step { padding: 0; }
+  }
+
+  /* ══════════════════════════════════════════════════════
+     CTA
+  ══════════════════════════════════════════════════════ */
+  .cta {
+    position:relative; z-index:1;
+    padding: 110px 5vw 120px;
+    text-align: center;
+    overflow:hidden;
+  }
+
+  /* Radial glow bg */
+  .cta::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,100,200,0.13) 0%, transparent 70%),
+      linear-gradient(180deg, transparent 0%, rgba(0,20,60,0.4) 100%);
+    pointer-events:none;
+  }
+
+  /* Top thin separator */
+  .cta__sep {
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:clamp(200px, 40%, 480px); height:1px;
+    background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
+    box-shadow: 0 0 12px rgba(0,212,255,0.18);
+  }
+
+  .cta__eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-display);
+    font-size:11px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--neon); margin-bottom:28px; opacity:0.85;
+  }
+  .cta__eyebrow svg { width:14px; height:14px; }
+
+  .cta__title {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 5vw, 58px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-hi);
+    max-width: 640px; margin: 0 auto 22px;
+  }
+  .cta__title span {
+    color: var(--neon);
+    text-shadow: 0 0 40px rgba(0,212,255,0.5);
+  }
+
+  .cta__sub {
+    font-size: clamp(15px, 1.6vw, 17px);
+    color: var(--text-mid); line-height: 1.7;
+    max-width: 480px; margin: 0 auto 52px;
+    font-weight: 300;
+  }
+
+  .cta__btn {
+    display:inline-flex; align-items:center; gap:12px;
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--bg-deep);
+    background: var(--neon);
+    border: none; border-radius: 14px;
+    padding: 18px 44px;
+    cursor: pointer;
+    position:relative;
+    text-decoration:none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow:
+      0 0 0 1px rgba(0,212,255,0.6),
+      0 0 24px rgba(0,212,255,0.35),
+      0 0 60px rgba(0,212,255,0.18),
+      0 8px 24px rgba(0,0,0,0.3);
+  }
+  .cta__btn::before {
+    content:'';
+    position:absolute; inset:0; border-radius:14px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .cta__btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+      0 0 0 1px rgba(0,212,255,0.8),
+      0 0 36px rgba(0,212,255,0.55),
+      0 0 80px rgba(0,212,255,0.25),
+      0 12px 32px rgba(0,0,0,0.35);
+  }
+  .cta__btn:active { transform: translateY(-1px) scale(1.00); }
+
+  .cta__btn-arrow {
+    width:18px; height:18px;
+    transition: transform 0.2s ease;
+  }
+  .cta__btn:hover .cta__btn-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ══════════════════════════════════════════════════════
+     FOOTER
+  ══════════════════════════════════════════════════════ */
+  .footer {
+    position:relative; z-index:1;
+    background: linear-gradient(180deg, var(--bg-deep) 0%, #01070f 100%);
+    padding: 0 5vw;
+  }
+
+  /* Top glow separator */
+  .footer__sep {
+    width:100%; height:1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,212,255,0.35) 30%, rgba(0,212,255,0.5) 50%, rgba(0,212,255,0.35) 70%, transparent 100%);
+    box-shadow: 0 0 20px rgba(0,212,255,0.15), 0 -1px 0 rgba(0,212,255,0.05);
+    margin-bottom: 64px;
+  }
+
+  .footer__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    flex-wrap:wrap;
+    margin-bottom: 56px;
+  }
+
+  .footer__brand {}
+
+  .footer__logo {
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-display);
+    font-size:20px; font-weight:800;
+    color:var(--text-hi);
+    letter-spacing:-0.02em;
+    margin-bottom:16px;
+    text-decoration:none;
+  }
+
+  .footer__logo-mark {
+    width:32px; height:32px; border-radius:9px;
+    background: linear-gradient(135deg, var(--neon) 0%, #0066bb 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 0 16px rgba(0,212,255,0.4);
+    flex-shrink:0;
+  }
+  .footer__logo-mark svg { width:16px; height:16px; color:#fff; }
+
+  .footer__tagline {
+    font-size: 13px; line-height: 1.7;
+    color: var(--text-lo);
+    max-width: 280px;
+    font-weight: 400;
+  }
+
+  /* Nav */
+  .footer__nav {
+    display:flex; gap: 36px; flex-wrap:wrap;
+    padding-top: 4px;
+  }
+
+  .footer__nav a {
+    font-family: var(--font-display);
+    font-size: 13px; font-weight:600;
+    letter-spacing: 0.04em;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.2s, text-shadow 0.2s;
+    white-space:nowrap;
+  }
+  .footer__nav a:hover {
+    color: var(--neon);
+    text-shadow: 0 0 12px rgba(0,212,255,0.4);
+  }
+
+  /* Bottom bar */
+  .footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.04);
+    padding: 24px 0 32px;
+    text-align:center;
+    font-size:12px;
+    color: var(--text-lo);
+    letter-spacing: 0.05em;
+  }
+  .footer__bottom span {
+    color: rgba(0,212,255,0.4);
+  }
+
+  /* ─── Keyframes ─────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     1. HOW IT WORKS
+════════════════════════════════════════════ -->
+<section class="hiw">
+  <div class="hiw__blob hiw__blob--1"></div>
+  <div class="hiw__blob hiw__blob--2"></div>
+
+  <p class="hiw__label">Processus</p>
+  <h2 class="hiw__title">Comment fonctionne <em>VeraCheck&nbsp;?</em></h2>
+
+  <div class="hiw__steps">
+
+    <!-- Step 1 -->
+    <div class="hiw__step">
+      <p class="hiw__step-num">01</p>
+      <div class="hiw__icon-wrap">
+        <svg class="hiw__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h3 class="hiw__step-title">Entrer une information</h3>
+      <p class="hiw__step-desc">L'utilisateur colle une rumeur, un message ou un texte douteux.</p>
+    </div>
+
+    <!-- Connector -->
+    <div class="hiw__connector">
+      <div class="hiw__connector-line">
+        <div class="hiw__connector-dot"></div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="hiw__step">
+      <p class="hiw__step-num">02</p>
+      <div class="hiw__icon-wrap">
+        <svg class="hiw__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </div>
+      <h3 class="hiw__step-title">Analyse par l'IA</h3>
+      <p class="hiw__step-desc">VeraCheck analyse l'information en utilisant des sources fiables.</p>
+    </div>
+
+    <!-- Connector -->
+    <div class="hiw__connector">
+      <div class="hiw__connector-line">
+        <div class="hiw__connector-dot"></div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="hiw__step">
+      <p class="hiw__step-num">03</p>
+      <div class="hiw__icon-wrap">
+        <svg class="hiw__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+        </svg>
+      </div>
+      <h3 class="hiw__step-title">Résultat clair</h3>
+      <p class="hiw__step-desc">L'utilisateur obtient un verdict : fiable, douteux ou faux.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     2. CALL TO ACTION
+════════════════════════════════════════════ -->
+<section class="cta">
+  <div class="cta__sep"></div>
+
+  <p class="cta__eyebrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+    </svg>
+    Vérification instantanée
+  </p>
+
+  <h2 class="cta__title">Vérifiez une information <span>maintenant</span></h2>
+
+  <p class="cta__sub">Utilisez VeraCheck pour analyser rapidement une information douteuse et obtenir un verdict clair.</p>
+
+  <a href="#" class="cta__btn">
+    Vérifier une information
+    <svg class="cta__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </a>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     3. FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__sep"></div>
+
+  <div class="footer__main">
+    <div class="footer__brand">
+      <a href="#" class="footer__logo">
+        <div class="footer__logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        VeraCheck
+      </a>
+      <p class="footer__tagline">Outil de vérification d'informations basé sur l'intelligence artificielle.</p>
+    </div>
+
+    <nav class="footer__nav">
+      <a href="#">Accueil</a>
+      <a href="#">Vérifier</a>
+      <a href="#">Leçons</a>
+      <a href="#">Simulation</a>
+      <a href="#">À propos</a>
+    </nav>
+  </div>
+
+  <div class="footer__bottom">
+    © 2026 VeraCheck <span>—</span> Tous droits réservés.
+  </div>
+</footer>
+
+</body>
+</html>
