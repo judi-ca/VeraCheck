@@ -47,6 +47,7 @@
         color: var(--text);
         
     }
+
     /* header */
 
     header{
@@ -99,6 +100,45 @@
        border-bottom: 1px solid var(--accent);
     }
 
+    /* Mobile nav bar */
+
+    .mobile-nav{
+        z-index: 1000;
+        display: none;
+        position: fixed;
+        transform: translateX(-50%);
+        bottom: 20px;
+        background-color:rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 400px;
+        border-radius: 30px;
+        left: 50%;
+        padding: 20px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-nav.hide{
+        transform: translate(-50%, 100px);
+        opacity: 0;
+    }
+
+    .mobile-nav ul{
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        text-align: center;
+    }
+
+    .mobile-nav ul li{
+        margin-left: 10px;
+        color: var(--text);
+        font-weight: bold;
+
+    }
     /* Section hero */
 
     .hero{
@@ -379,6 +419,8 @@
         transition: 0.2s ease;
     }
 
+    .function .function-steps .step h3{color: var(--text);}
+
     .function .function-steps .step i:hover{transform: scale(1.02);}
 
     .function .function-steps .step p{
@@ -457,6 +499,9 @@
         transform: scale(1.03);
     }
 
+    footer p{text-align: center; margin-top: 20px;}
+
+
     /* Responsive */
 
     @media (max-width:768px) {
@@ -503,5 +548,17 @@
         justify-content: center;
          }
 
-    .function .function-steps .step{min-width: 300px;}
+        .function .function-steps .step{min-width: 300px;}
+        footer .footer-nav .link nav ul{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        margin-top: 20px;
+        }
+        footer .footer-nav .link nav ul li{
+        font-size: 15px;
+        }
+
+        .mobile-nav{display: block;}
     }
