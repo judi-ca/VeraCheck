@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Yacinthe Adi TINDANAHIRE">
+    <meta name="description" content="Une plateforme qui permet de vérifier la véracité des informations">
+    <meta name="theme-color" content="#1a1a2e">
+    <link rel="shortcut icon" href="/images/veraCheck.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="color-scheme" content="dark light">
+    <!-- Open Graph (partage sur facebook et whatsApp)-->
+    <meta property="og:title" content="VeraCheck - Outil de vérification de news">
+    <meta property="og:description" content="Une plateforme qui permet de vérifier la véracité des informations">
+    <meta property="og:image" content="/images/logoVera2Check.jpeg">
+    <meta property="og:type" content="website">
+    <!-- Petit boost -->
+     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Style css et titre -->
+    <link rel="stylesheet" href="/css/style.css">
+    <title>VeraCheck - Outil de vérification de news</title>
+</head>
+
+<!-- Debut du header -->
+      <header>
+        <div class="left">
+            <!-- <img src="/images/logoVera2Check.jpeg " alt="Logo VeraCheck"> -->
+                <h1><span>Vera</span>Check</h1>
+        </div>
+        <div class="rigth">
+            <nav>
+                <ul>
+                    <li><a href="/index.html">Accueil</a></li>
+                    <li class="active"><a href="/verifier.html">Vérifier</a></li>
+                    <li><a href="#">Leçons</a></li>
+                    <li><a href="#">Simulation</a></li>
+                    <li><a href="#">A propos</a></li>
+                </ul>
+            </nav>
+        </div>
+      </header>
+
+      <!-- Nav bar pour mobile -->
+
+        <div class="mobile-nav">
+            <nav>
+                <ul>
+                    <li><a href="/index.html"><i class="fa-solid fa-home"></i></a></a></li>
+                    <li  class="active"><a href="/verifier.html"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-book"></i></a></li>
+                    <li><a href="#"><i class="fas fa-sync-alt"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-circle-info"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Debut de la section verification -->
+
+        <section class="verification">
+
+            <div class="verification-top">
+                <div class="dot"></div>
+                <h4>Analyse en temps réel</h4>
+            </div>
+
+            <h1>La vérité <br><span>En 2 secondes</span></h1>
+            <p class="verification-description">Entez n'importe quelle affirmation - notre IA croise <span>des milliers de sources fibles</span> et vous donne un verdict clair, instantané et sourcé.</p>
+
+            <!-- Verification card -->
+             <div class="verification-card">
+                <textarea  id="user-text" placeholder="Ex: La tour Eiffel fait 330 mètres"></textarea>
+                <button id="analyse-btn" class="analyse-btn">Analyser</button>
+             </div>
+
+             <!-- <div class="verification-result" id="verification-result"></div> -->
+              <div class="line"><hr></div>
+
+        </section>
+
+        <!-- Section des etapes de verification -->
+
+        <section class="verification-etapes">
+            <h1>Simple. <span>Rapide.</span> Fiable.</h1>
+            <p>Notre algorithme ne se contente pas de chercher - il comprend, compare er raisonne pour donner la réponse la plus juste</p>
+
+            <div class="verification-etpes-cards">
+
+                <div class="verification-card">
+                    <div class="etape-head">
+                        <div class="etape-number">01</div>
+                        <h4>Vous posez la question</h4>
+                    </div>
+                    <p class="etape-description">Tapez n'importe quelle information ou rumeur à vérifier.</p>
+                </div>
+
+                <div class="verification-card">
+                    <div class="etape-head">
+                        <div class="etape-number">02</div>
+                        <h4>L'IA analyse</h4>
+                    </div>
+                    <p class="etape-description">Elle croise des milliers de sources en quelques secondes.</p>
+                </div>
+
+                <div class="verification-card">
+                    <div class="etape-head">
+                        <div class="etape-number">03</div>
+                        <h4>Verdict clair</h4>
+                    </div>
+                    <p class="etape-description">Vrai, Faux ou douteux avec sources à l'appui.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Script  -->
+        <script src="/Js/script.js"></script>
+
+
+        <!-- Prompt -->
+
+        <!-- 
+        je veux mainteant faie la partie logique de veracheck cest a dire pour verifer des informations. Le document verifier.html est deja pret mainteant le script.js cest laba tu va fairr la partie logique. Je veux avoir mon propre server donc tu devr creer un fchier de plus et aussi un endroit pour que ma cle Api soit en securité. Tu as acces a tous les fichier mais ne mofie rien dans le css ni le fichier index.html , mais tu bpeux ecrire le code de ce que je t'ai dis de faire . Je veux utiliser une Api de claude Ai donc adapte le code.  
+        -->
+    
+</body>
+</html>
