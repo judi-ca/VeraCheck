@@ -673,6 +673,38 @@
         margin: 0 auto;
         border-radius: 5px;
         width: 95%;
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .verification .verification-result.true {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .verification .verification-result.false {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .verification .verification-result.uncertain {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeaa7;
+      }
+
+      .verification .verification-result.loading {
+        background-color: var(--accent-hover);
+        color: var(--text);
+      }
+
+      .verification .verification-result.error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
       }
 
       .verification-etapes {background-color: var(--bg); margin-top: 35px; padding: 20px;}
@@ -718,3 +750,69 @@
     
     }
     .verification-etpes-cards .verification-card .etape-head h4{color: var(--accent); margin: 15px 5px;}
+
+
+    /* ================================================================================ */
+    /* ===========================  css des reponses stylee du bot =================== */
+    /* ================================================================================ */
+
+    /* Container des messages */
+.verification-messages {
+  margin-top: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+}
+
+/* Bulles */
+.bubble {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* Bulles IA */
+.bubble.ia {
+  background-color: #e2f0ff;
+  color: #000;
+  align-self: flex-end;
+}
+
+/* Bulles utilisateur */
+.bubble.user {
+  background-color: #d1ffd6;
+  color: #000;
+  align-self: flex-start;
+}
+
+/* Verdicts colorés */
+.verdict-vrai {
+  color: #16a34a;
+  font-weight: bold;
+}
+.verdict-faux {
+  color: #dc2626;
+  font-weight: bold;
+}
+.verdict-incertain {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/* Explication */
+.bubble em {
+  display: block;
+  margin-top: 5px;
+}
+
+/* Score */
+.bubble .score {
+  margin-top: 5px;
+  font-size: 0.9em;
+  font-weight: bold;
+}
