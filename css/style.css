@@ -14,7 +14,7 @@
     /* Mode light */
 
 
-    /* @media (prefers-color-scheme: light){
+    @media (prefers-color-scheme: light){
         :root{
             --bg-deep:#ffffff;
             --bg:#ffffff;
@@ -22,7 +22,7 @@
             --text:#1a1a2e;
             --black:rgba(0, 0, 0, 0.8);
         }
-    } */
+    }
 
 
     *{
