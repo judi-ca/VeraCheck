@@ -14,7 +14,7 @@
     /* Mode light */
 
 
-    @media (prefers-color-scheme: light){
+    /* @media (prefers-color-scheme: light){
         :root{
             --bg-deep:#ffffff;
             --bg:#ffffff;
@@ -22,7 +22,7 @@
             --text:#1a1a2e;
             --black:rgba(0, 0, 0, 0.8);
         }
-    }
+    } */
 
 
     *{
@@ -117,16 +117,16 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         width: 90%;
         max-width: 400px;
-        border-radius: 30px;
+        border-radius: 20px;
         left: 50%;
-        padding: 20px;
+        padding: 15px;
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    .mobile-nav.hide{
+    /* .mobile-nav.hide{
         transform: translate(-50%, 100px);
         opacity: 0;
-    }
+    } */
 
     .mobile-nav ul{
         display: flex;
@@ -567,6 +567,7 @@
         }
 
         .mobile-nav{display: block;}
+        .footer-nav .link{display: none;}
     }
 
 

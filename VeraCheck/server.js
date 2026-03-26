@@ -1,13 +1,11 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const fetch = require('node-fetch'); // Assure que node-fetch est installé
+const fetch = require('node-fetch');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -20,12 +18,27 @@ app.post('/verify', async (req, res) => {
   }
 
   try {
-    const prompt = `Analyse cette information et donne :
-- Verdict (Vrai, Faux ou Incertain)
-- Explication courte
-- Score de fiabilité (0-100)
+    // 🔥 PROMPT ULTRA IMPORTANT (corrige ton problème N/A)
+    const prompt = `
+Tu es VeraCheck, une IA spécialisée dans la vérification d'informations.
 
-Information à analyser : "${text}"`;
+Ta mission :
+- Vérifier une information
+- Expliquer simplement
+- Donner un conseil utile
+
+RÈGLES STRICTES :
+- Tu réponds uniquement dans ce format
+- Pas de texte en dehors du format
+
+FORMAT OBLIGATOIRE :
+
+Verdict: (Vrai, Faux ou Incertain)
+Explication: (2 phrases simples)
+Conseil: (action concrète pour l'utilisateur)
+
+Affirmation: "${text}"
+`;
 
     const response = await fetch(
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
@@ -38,14 +51,22 @@ Information à analyser : "${text}"`;
         body: JSON.stringify({
           contents: [
             {
-              parts: [
-                { text: prompt }
-              ]
+              parts: [{ text: prompt }]
             }
           ]
         })
       }
     );
+
+    // 🚨 Gestion erreur 429 (trop de requêtes)
+    if (response.status === 429) {
+      return res.status(200).json({
+        result:
+`Verdict: Incertain
+Explication: Trop de requêtes envoyées à l'IA.
+Conseil: Attends quelques secondes avant de réessayer.`
+      });
+    }
 
     if (!response.ok) {
       throw new Error(`Erreur API Gemini: ${response.status}`);
@@ -53,15 +74,30 @@ Information à analyser : "${text}"`;
 
     const data = await response.json();
 
-    const generatedText = 
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-      "Erreur : pas de réponse de Gemini";
+    // 🔒 Sécurisation (évite crash + N/A)
+    const generatedText =
+      data?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    if (!generatedText) {
+      return res.status(200).json({
+        result:
+`Verdict: Incertain
+Explication: Impossible d'analyser cette information.
+Conseil: Reformule la phrase ou réessaie.`
+      });
+    }
 
     res.json({ result: generatedText });
 
   } catch (error) {
     console.error('Erreur lors de la vérification:', error);
-    res.status(500).json({ error: 'Erreur lors de la vérification. Veuillez réessayer.' });
+
+    res.status(200).json({
+      result:
+`Verdict: Incertain
+Explication: Une erreur est survenue côté serveur.
+Conseil: Réessaie plus tard.`
+    });
   }
 });
 
