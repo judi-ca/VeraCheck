@@ -124,7 +124,7 @@
     }
 
     .mobile-nav.hide{
-        transform: translate(-50%, 0px);
+        transform: translate(-50%, 25px);
         opacity: 0;
     }
 
