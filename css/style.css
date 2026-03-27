@@ -568,7 +568,67 @@
 
         .mobile-nav{display: block;}
         .footer-nav .link{display: none;}
+
+    .featured{
+        padding: 15px;
     }
+
+    .featured .featured-left .featured-title{
+        font-size: 18px;
+    }
+
+    .featured .featured-left p{
+        font-size: 14px;
+    }
+
+    .featured .featured-right{
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+    }
+
+        
+    }
+
+    @media (max-width: 768px){
+
+    .featured{
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .featured .featured-left{
+        margin: 0;
+    }
+
+    .featured .featured-right{
+        margin-top: 20px;
+        width: 100px;
+        height: 100px;
+        font-size: 40px;
+    }
+
+    .featured .featured-left .featured-badge{
+        margin: 0 auto;
+    }
+
+    .featured .featured-left .featured-slid-bar{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .featured .featured-left .featured-slid-bar ul{
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .featured .featured-left .featured-slid-bar ul li{
+        margin: 5px;
+        font-size: 11px;
+    }
+}
 
 
 
@@ -817,3 +877,93 @@
   font-size: 0.9em;
   font-weight: bold;
 }
+
+/* ============================================== */
+/* ============================================== */
+
+    .cours-title{
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        margin: 20px;
+        color: var(--text);
+    }
+    .cours-title .cours-left{width:600px;}
+    .cours-title .cours-left h2{color: var(--accent);}
+    .cours-title .cours-left span{color: var(--accent);}
+
+    /* ====================================================== */
+            /* DEBUT DE LA SECTION FEATURED */
+    /* ====================================================== */
+    .featured{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color:var(--text);
+        background-color: var(--accent-hover);
+        border: 1px solid var(--accent);
+        padding: 40px;
+        width: 90%;
+        border-radius: 10px;
+        margin: 40px auto;
+    }
+
+    .featured .featured-left{max-width:475px; width: 100%; font-family: Arial, Helvetica, sans-serif; margin: 20px;}
+    .featured .featured-left .featured-title{margin-top: 20px; margin-bottom: 20px; color: var(--accent); font-size: 15px;}
+    .featured .featured-left .featured-badge i{margin-right: 5px;}
+    .featured .featured-left .featured-badge{
+        border: 1px solid var(--accent);
+        color: var(--black);
+        border-radius: 10px;
+        width:175px;
+        padding: 5px;
+        text-transform: uppercase;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 800;
+    }
+
+    .featured .featured-left .featured-badge .fa-star{color:gold;}
+    .featured .featured-left .featured-slid-bar{display: flex; margin-top: 20px;}
+    .featured .featured-left .featured-slid-bar ul{
+        display: flex;
+        align-items: center;
+        list-style: none;
+    }
+
+    .featured .featured-left .featured-slid-bar ul li{
+        margin-left: 15px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        border: 1px dashed var(--accent);
+        color: var(--text);
+        padding: 5px;
+        border-radius: 15px;
+    }
+
+    .featured .featured-left .featured-slid-bar ul li i{margin-right: 5px;}
+
+    .featured .featured-right{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 140px;
+        height: 140px;
+        background:var(--accent-hover);
+        border-radius: 50%;
+        border: 1px dashed var(--accent);
+        font-size: 56px;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        animation: animation 3s ease-in-out infinite;
+    }
+
+    @keyframes animation {
+        0%, 100% {
+        box-shadow: 0 0 0 0 var(--accent-hover);
+      }
+      50% {
+       box-shadow: 0 0 0 16px var(--accent-hover);
+      }
+    }
