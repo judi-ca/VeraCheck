@@ -123,10 +123,10 @@
         transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    /* .mobile-nav.hide{
-        transform: translate(-50%, 100px);
+    .mobile-nav.hide{
+        transform: translate(-50%, 50px);
         opacity: 0;
-    } */
+    }
 
     .mobile-nav ul{
         display: flex;
