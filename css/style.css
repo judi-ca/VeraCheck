@@ -1040,18 +1040,4 @@
     .cours .cours-card .btn:hover{
         transform: scale(1.04);
     }
-
-    #coursPage{
-    display:none;
-    padding: 20px;
-    }
-
-    #back {
-    margin-bottom: 20px;
-    cursor: pointer;
-    display: inline-block;
-    background: var(--accent);
-    padding: 8px;
-    border-radius: 20px;
-    color: black;
-}
+    
