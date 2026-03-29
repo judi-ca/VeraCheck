@@ -1,3 +1,10 @@
+/* Import Google Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 /* Style general */
 :root{
@@ -957,3 +964,94 @@
        box-shadow: 0 0 0 16px var(--accent-hover);
       }
     }
+
+    /* ===================================================== */
+            /* DEBUT DE LA SECTION DES COURS */
+    /* ===================================================== */
+
+    .cours{
+        margin-top: 30px;
+        padding: 30px;
+        /* background-color: var(--bg-secondary); */
+        color: var(--text);
+    }
+    
+    .cours .cours-cards{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .cours .cours-card{
+        border-radius: 12px;
+        width: 500px;
+        transition: 0.2s ease;
+        background-color: var(--bg);
+        border: 1px solid var(--black);
+    }
+
+     .cours .cours-card .cour-card-header{
+        height: 150px;
+        border-radius: 12px 12px 0 0;
+        border-bottom: 1px solid #000;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 10px;
+     }
+
+     .cours .cours-card .cour-card-header .level{
+        border-radius: 15px;
+        padding: 5px;
+        margin-top: 15px;
+        font-size: 12px;
+     }
+    .cours .cours-card .cour-card-header h3{font-family:'Roboto' , 'sans-serif';}
+    .cours .cours-card .cour-card-header .level{
+        font-family:'Roboto' , 'sans-serif';
+        margin-top: 5px;
+    }
+
+    .cour-card-header .icon {
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .cours .cours-card .cour-desc{padding: 20px;}
+    .cours .cours-card .cour-desc p{font-size: 14px;}
+    .cours .cours-card .icon i{
+        border: 1px solid var(--accent);
+        background-color: var(--accent-hover);
+        padding: 5px;
+        border-radius: 5px;
+     }
+
+    .cours .cours-card .btn{
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        transition: 0.2s ease;
+        gap: 5px;
+    }
+
+    .cours .cours-card .btn:hover{
+        transform: scale(1.04);
+    }
+
+    #coursPage{
+    display:none;
+    padding: 20px;
+    }
+
+    #back {
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: inline-block;
+    background: var(--accent);
+    padding: 8px;
+    border-radius: 20px;
+    color: black;
+}

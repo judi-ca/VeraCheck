@@ -18,7 +18,7 @@
      <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!-- Style css et titre -->
     <link rel="stylesheet" href="/css/style.css">
-    <title>VeraCheck - Platforme de lutte contre la désinformation</title>
+    <title>VeraCheck - Plateforme de lutte contre la désinformation</title>
 </head>
 <body>
 
@@ -54,6 +54,9 @@
             </nav>
         </div>
 
+<div class="landing">
+
+
         <!-- Debut du titre de la section -->
          <div class="cours-title">
             <div class="cours-left">
@@ -84,5 +87,101 @@
                 <div class="featured-right"><i class="fa-solid fa-lightbulb"></i></div>
 
          </section>
+
+            <!-- la section des cours -->
+
+        <section class="cours">
+
+            <div class="cours-cards">
+
+                    <div class="cours-card">
+                        <div class="cour-card-header">
+                            <div class="icon"><i class="fa-solid fa-image"></i></div>
+                            <h3>Détection des images manipulées</h3>
+                            <div class="level">Intermédiaire</div>
+                        </div>
+                        <div class="cour-desc">       
+                            <p>Apprenez à identifier les images retouchées ou sorties de leur contexte grâce à des techniques d'analyse visuelle et d'outils en ligne.</p>
+                            <button class="btn" onclick="openCourse('img')">Voir le cours<i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+
+                    <div class="cours-card">
+                        <div class="cour-card-header">
+                            <div class="icon"><i class="fa-solid fa-check-circle"></i></div>
+                            <h3>Fact-checking</h3>
+                            <div class="level">Débutant</div>
+                        </div>
+                        <div class="cour-desc">
+                            <p>Découvrez les bases pour vérifier les informations et éviter les fake news sur internet.</p>
+                            <button class="btn" onclick="openCourse('fact')"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+
+                    <div class="cours-card">
+                        <div class="cour-card-header">
+                        <div class="icon"><i class="fa-solid fa-robot"></i></div>
+                            <h3>IA et manipulation</h3>
+                            <div class="level">Avancé</div>
+                        </div>
+                        <div class="cour-desc">
+                            <p>Découvrez comment l’intelligence artificielle est utilisée pour créer de fausses informations.</p>
+                            <button class="btn" onclick="openCourse('ia')">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+
+                    <div class="cours-card">
+                            <div class="cour-card-header">
+                                <div class="icon"><i class="fa-solid fa-share-nodes"></i></div>
+                                <h3>Désinformation sur les réseaux</h3>
+                                <div class="level">Intermédiaire</div>
+                            </div>
+                            <div class="cour-desc">
+                                 <p>Comprenez comment les fausses informations se propagent sur les réseaux sociaux.</p>
+                                <button class="btn" onclick="openCourse('social')"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                    </div>
+
+
+                    <div class="cours-card">
+                        <div class="cour-card-header">
+                            <div class="icon"><i class="fa-solid fa-newspaper"></i></div>
+                            <h3>Analyse des sources</h3>
+                            <div class="level">Intermédiaire</div>
+                        </div>
+                        <div class="cour-desc">
+                            <p>Apprenez à évaluer la fiabilité des sites web et des auteurs d'information.</p>
+                            <button class="btn" onclick="openCourse('sources')"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="cours-card">
+                        <div class="cour-card-header">
+                            <div class="icon"><i class="fa-solid fa-video"></i></div>
+                            <h3>Vérification des vidéos</h3>
+                            <div class="level">Intermédiaire</div>
+                        </div>
+                        <div class="cour-desc">
+                            <p>Apprenez à analyser les vidéos pour détecter les montages, deepfakes et manipulations visuelles.</p>
+                            <button class="btn" onclick="openCourse('video')">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+            </div>
+            <!-- FIn des cards -->
+
+ </div>
+            <div id="coursPage">
+                <div id="back" onclick="goBack()">⬅ Retour</div>
+                <div id="coursContent"></div>
+            </div>
+
+
+        </section>
+
+        <script src="/Js/script.js"></script>
 </body>
 </html>
