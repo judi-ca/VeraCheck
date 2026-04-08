@@ -7,7 +7,7 @@
     <meta name="description" content="Plateforme de lutte contre la désinformation au quotidien">
     <meta name="theme-color" content="#1a1a2e">
     <link rel="shortcut icon" href="/images/veraCheck.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="color-scheme" content="dark light">
     <!-- Open Graph (partage sur facebook et whatsApp)-->
     <meta property="og:title" content="VeraCheck - Plateforme de lutte contre la désinformation au quotidien">
@@ -19,6 +19,7 @@
     <!-- Style css et titre -->
     <link rel="stylesheet" href="/css/style.css">
     <title>VeraCheck - Plateforme de lutte contre la désinformation</title>
+    <link rel="manifest" href="/Js/manifest.JSON">
 </head>
 <body>
      <!-- Debut du header -->
@@ -212,6 +213,13 @@
 
      <!-- Js -->
       <script src="/Js/script.js"></script>
+           <script>
+            window.addEventListener('load', ()=>{
+                if("serviceWorker" in navigator){
+                    navigator.serviceWorker.register('/Js/sw.js')
+                }
+            })
+        </script>
 
 </body>
 </html>

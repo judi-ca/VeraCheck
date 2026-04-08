@@ -112,12 +112,13 @@
         <!-- Script  -->
         <script src="/Js/script.js"></script>
 
-
-        <!-- Prompt -->
-
-        <!-- 
-        je veux mainteant faie la partie logique de veracheck cest a dire pour verifer des informations. Le document verifier.html est deja pret mainteant le script.js cest laba tu va fairr la partie logique. Je veux avoir mon propre server donc tu devr creer un fchier de plus et aussi un endroit pour que ma cle Api soit en securité. Tu as acces a tous les fichier mais ne mofie rien dans le css ni le fichier index.html , mais tu bpeux ecrire le code de ce que je t'ai dis de faire . Je veux utiliser une Api de claude Ai donc adapte le code.  
-        -->
+        <script>
+            window.addEventListener('load', ()=>{
+                if("serviceWorker" in navigator){
+                    navigator.serviceWorker.register('/Js/sw.js')
+                }
+            })
+        </script>
     
 </body>
 </html>
