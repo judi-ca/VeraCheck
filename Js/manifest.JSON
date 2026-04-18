@@ -1,18 +1,20 @@
 {
     "name":"VeraCheck",
+    "theme color":"#1a1a2e",
+    "Description":"Plateforme de lutte contre la désinformation au quotidien",
     "icons":[
         {
-        "src":"/images/Vektor.png",
-        "type":"image/png",
-        "sizes": "512x512"
+        "src":"/images/logoVera.jpeg",
+        "type":"image/jpeg",
+        "sizes":"192x192"
         },
 
-         {
-        "src":"/images/Vektor-art.png",
-        "type":"image/png",
-        "sizes": "192x192"
+          {
+        "src":"/images/logo1.jpeg",
+        "type":"image/jpeg",
+        "sizes":"512x512"
         }
     ],
-    "start_url" : "/?source=pwa",
+    "start_url":"/?source=pwa",
     "display": "standalone"
 }

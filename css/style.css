@@ -16,6 +16,7 @@
     --black:rgba(0, 0, 0, 0.92);
     --bg-secondary:#1f1f38;
     --text:rgb(237, 227, 227);
+    --card: #1a2540;
 }
 
     /* Mode light */
@@ -312,21 +313,20 @@
     }
 
     .hero-cards .cards .card{
-        /* background-color: var(--accent-hover); */
+        background-color: var(--card);
         border-radius: 15px;
         border: 1px solid var(--bg);
         max-width: 850px;
         width: 100%;
         margin: 10px 10px;
         padding:10px;
-        border:1px solid var(--black);
         transition: 0.2s ease;
     }
     
     .hero-cards .cards .card:hover{transform: translateX(5px);}
     .hero-cards .cards .card .card-head{display: flex; align-items: center;}
-    .hero-cards .cards .card .card-head{color: var(--accent);}
-    .hero-cards .cards .card .card-head h4{color: #000;}
+    .hero-cards .cards .card .card-head{color: var(--accent); gap: 7px;}
+    .hero-cards .cards .card .card-head h4{color:var(--accent);}
     .hero-cards .cards .card .card-head i{
         background-color:var(--accent-hover);
         color: var(--accent);
@@ -339,7 +339,7 @@
     .hero-cards .cards .card .hero-content{
         margin-top: 10px;
         font-size: 12px;
-        color: var(--text);
+        color: var(--white);
         font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
@@ -360,8 +360,7 @@
     }
 
     .hero-cards .cards .card .card-end i{
-        /* background-color:var(--accent); */
-        color: var(--black);
+        color: var(--white);
         border-radius:50px;
         padding: 5px;
         transition: 0.2s ease;
@@ -578,6 +577,10 @@
 
         .mobile-nav{display: block;}
         .footer-nav .link{display: none;}
+
+        /* ====================================== */
+        /* =============Featured================= */
+        /* ====================================== */
 
         .featured{
         flex-direction: column;
@@ -897,7 +900,7 @@
         justify-content: space-between;
         align-items: center;
         color:var(--text);
-        background-color: var(--accent-hover);
+        background-color: var(--card);
         border: 1px solid var(--accent);
         padding: 40px;
         width: 90%;
@@ -921,6 +924,7 @@
 
     .featured .featured-left .featured-badge .fa-star{color:gold;}
     .featured .featured-left .featured-slid-bar{display: flex; margin-top: 20px;}
+    .featured .featured-desc{color: var(--white);}
     .featured .featured-left .featured-slid-bar ul{
         display: flex;
         align-items: center;
@@ -932,8 +936,8 @@
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-weight: 500;
         font-size: 12px;
-        border: 1px dashed var(--accent);
-        color: var(--text);
+        border: 1px solid var(--accent);
+        color: var(--accent);
         padding: 5px;
         border-radius: 15px;
     }
@@ -985,35 +989,53 @@
         gap: 20px;
     }
 
-    .cours .cours-card{
+    .cours .cours_card{
         border-radius: 12px;
+        padding: 12px;
         max-width: 90%;
         width: 500px;
+        position: relative;
+        overflow: hidden;
+        background-color: var(--card);
         transition: 0.2s ease;
-        background-color: var(--bg);
-        border: 1px solid var(--black);
+    }
+    
+    .cours .cours_card:hover{
+        transform:scale(1.01);
+        border: 1px solid var(--accent);
     }
 
-     .cours .cours-card .cour-card-header{
+     .cours .cours_card .cour-card-header::before{
+        content: "";
+        position: absolute;
+        background-color: var(--accent-hover);
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        top: -30px;
+        right: -30px;
+    }
+
+    .cours .cours_card .cour_card-header{
         height: 150px;
         border-radius: 12px 12px 0 0;
         /* border-bottom: 1px solid #000; */
         justify-content: space-between;
         align-items: flex-start;
         padding: 10px;
-     }
+    }
 
-    .cours .cours-card .cour-card-header .level{margin-top: 15px;}    
-    .cours .cours-card .cour-card-header .level h4{
+    .cours .cours_card .cour-card-header .level{margin-top: 15px;}    
+    .cours .cours_card .cour-card-header .level h4{
         font-size: 12px;
         padding: 5px;
         color: var(--accent);
         font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-     }
+    }
 
 
-    .cours .cours-card .cour-card-header h3{font-family:'Roboto' , 'sans-serif';}
-    .cours .cours-card .cour-card-header .level{
+    .cours .cours_card .cour-card-header h3{font-family:'Roboto' , 'sans-serif'; color: var(--white);}
+    .cours .cours_card .cour-card-header .level{
         font-family:'Roboto' , 'sans-serif';
         margin-top: 5px;
     }
@@ -1023,18 +1045,17 @@
         border-radius: 5px;
         margin-bottom: 15px;
     }
-
-    .cours .cours-card .cour-desc{padding: 20px;}
-    .cours .cours-card .cour-desc p{font-size: 14px;}
-    .cours .cours-card .icon i{
+    .cours .cours_card .cour_desc{padding: 20px;}
+    .cours .cours_card .cour_desc p{font-size: 14px; color:grey;}
+    .cours .cours_card .icon i{
         border: 1px solid var(--accent);
         background-color: var(--accent-hover);
-        color: var(--text);
+        color: var(--white);
         padding: 5px;
         border-radius: 5px;
      }
 
-    .cours .cours-card .btn{
+    .cours .cours_card .btn{
         background:var(--accent-hover);
         border: 1px solid var(--accent);
         padding: 10px;
@@ -1043,9 +1064,16 @@
         gap: 5px;
     }
 
-    .cours .cours-card .btn i{  transition: 0.2s ease;}
-    .cours .cours-card .btn:hover, 
-    .cours .cours-card .btn i:hover{
+    .cours .cours_card .btn i{  transition: 0.2s ease;}
+    .cours .cours_card .btn:hover, 
+    .cours .cours_card .btn i:hover{
         transform: translateX(2px);
     }
-    
+
+    .cours .cours_card .card-content{
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.4s ease;
+        opacity: 0;
+    }
+

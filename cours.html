@@ -94,79 +94,86 @@
 
             <div class="cours-cards">
 
-                    <div class="cours-card">
+                    <div class="cours_card">
                         <div class="cour-card-header">
                             <div class="icon"><i class="fa-solid fa-image"></i></div>
                             <h3>Détection des images manipulées</h3>
                             <div class="level"><h4>Intermédiaire</h4></div>
                         </div>
-                        <div class="cour-desc">       
+                        <div class="cour_desc">       
                             <p>Apprenez à identifier les images retouchées ou sorties de leur contexte grâce à des techniques d'analyse visuelle et d'outils en ligne.</p>
-                            <button class="btn" onclick="openCourse('img')">Voir le cours<i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="btn" onclick="toggleCard(this)">Voir le cours<i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>Verifie les ombres</li>
+                                <li>Analyse les details</li>
+                                <li>Verifie les sources</li>
+                            </ul>
                         </div>
                     </div>
 
 
-                    <div class="cours-card">
+                    <div class="cours_card">
                         <div class="cour-card-header">
                             <div class="icon"><i class="fa-solid fa-check-circle"></i></div>
                             <h3>Fact-checking</h3>
                             <div class="level"><h4>Débutant</h4></div>
                         </div>
-                        <div class="cour-desc">
+                        <div class="cour_desc">
                             <p>Découvrez les bases pour vérifier les informations et éviter les fake news sur internet.</p>
-                            <button class="btn" onclick="openCourse('fact')"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="btn" onclick="toggleCard(this)"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
 
 
-                    <div class="cours-card">
+                    <div class="cours_card">
                         <div class="cour-card-header">
                         <div class="icon"><i class="fa-solid fa-robot"></i></div>
                             <h3>IA et manipulation</h3>
                             <div class="level"><h4>Avancé</h4></div>
                         </div>
-                        <div class="cour-desc">
+                        <div class="cour_desc">
                             <p>Découvrez comment l’intelligence artificielle est utilisée pour créer de fausses informations.</p>
-                            <button class="btn" onclick="openCourse('ia')">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="btn"  onclick="toggleCard(this)">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
 
 
-                    <div class="cours-card">
+                    <div class="cours_card">
                             <div class="cour-card-header">
                                 <div class="icon"><i class="fa-solid fa-share-nodes"></i></div>
                                 <h3>Désinformation sur les réseaux</h3>
                                 <div class="level"><h4>Intermédiaire</h4></div>
                             </div>
-                            <div class="cour-desc">
+                            <div class="cour_desc">
                                  <p>Comprenez comment les fausses informations se propagent sur les réseaux sociaux.</p>
-                                <button class="btn" onclick="openCourse('social')"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                                <button class="btn" onclick="toggleCard(this)"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                             </div>
                     </div>
 
 
-                    <div class="cours-card">
+                    <div class="cours_card">
                         <div class="cour-card-header">
                             <div class="icon"><i class="fa-solid fa-newspaper"></i></div>
                             <h3>Analyse des sources</h3>
                             <div class="level"><h4>Intermédiaire</h4></div>
                         </div>
-                        <div class="cour-desc">
+                        <div class="cour_desc">
                             <p>Apprenez à évaluer la fiabilité des sites web et des auteurs d'information.</p>
-                            <button class="btn" onclick="openCourse('sources')"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="btn"  onclick="toggleCard(this)"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
 
-                    <div class="cours-card">
+                    <div class="cours_card">
                         <div class="cour-card-header">
                             <div class="icon"><i class="fa-solid fa-video"></i></div>
                             <h3>Vérification des vidéos</h3>
                             <div class="level"><h4>Intermédiaire</h4></div>
                         </div>
-                        <div class="cour-desc">
+                        <div class="cour_desc">
                             <p>Apprenez à analyser les vidéos pour détecter les montages, deepfakes et manipulations visuelles.</p>
-                            <button class="btn" onclick="openCourse('video')">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                            <button class="btn" onclick="toggleCard(this)">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
 
