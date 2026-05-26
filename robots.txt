@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://veracheck.com/sitemap.xml
+
+# Crawl delay (optional, 1 second)
+Crawl-delay: 1

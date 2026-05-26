@@ -387,6 +387,7 @@
         font-size: 45px;
         color: var(--text);
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        animation: slideInDown 0.6s ease-out;
     }
 
     .function h2 span{
@@ -420,8 +421,13 @@
         flex-direction: column;
         width: 250px;
         margin: 25px;
+        transition: all 0.3s ease;
     }
 
+    .function .function-steps .step:hover{
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 194, 255, 0.2);
+    }
 
     .function .function-steps .step i{
         background-color: var(--accent-hover);
@@ -431,12 +437,16 @@
         padding: 10px;
         font-size: 20px;
         margin-bottom: 15px;
-        transition: 0.2s ease;
+        transition: 0.3s ease;
     }
 
     .function .function-steps .step h3{color: var(--text);}
 
-    .function .function-steps .step i:hover{transform: scale(1.02);}
+    .function .function-steps .step i:hover{
+        transform: scale(1.2) rotate(5deg);
+        background-color: var(--accent);
+        color: var(--bg);
+    }
 
     .function .function-steps .step p{
         font-size: 12px;
@@ -444,6 +454,19 @@
         text-align: center;
         margin-top: 10px;
     }
+
+    @keyframes slideInDown{
+        from{
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
 
     /* Footer */
 
@@ -975,7 +998,7 @@
 
     .cours{
         margin-top: 30px;
-        padding: 30px;
+        padding:30px;
         /* background-color: var(--bg-secondary); */
         color: var(--text);
     }
@@ -997,13 +1020,8 @@
         position: relative;
         overflow: hidden;
         background-color: var(--card);
-        transition: 0.2s ease;
     }
     
-    .cours .cours_card:hover{
-        transform:scale(1.01);
-        border: 1px solid var(--accent);
-    }
 
      .cours .cours_card .cour-card-header::before{
         content: "";
@@ -1077,3 +1095,313 @@
         opacity: 0;
     }
 
+    .cours .cours_card .card-content.show{
+        max-height: 600px;
+        opacity: 1;
+        padding: 15px 20px;
+    }
+
+    .cours .cours_card .card-content ul{
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .cours .cours_card .card-content li{
+        padding: 8px 0;
+        color: var(--text);
+        font-size: 13px;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .cours .cours_card .card-content li:before{
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+    }
+
+    /* Scroll animations */
+    @keyframes fadeInUp{
+        from{
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInLeft{
+        from{
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInRight{
+        from{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .card.animate-in,
+    .step.animate-in,
+    .cours_card.animate-in{
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Stagger animations for cards */
+    .cards .card:nth-child(1).animate-in,
+    .function-steps .step:nth-child(1).animate-in,
+    .cours-cards .cours_card:nth-child(1).animate-in{
+        animation-delay: 0.1s;
+    }
+
+    .cards .card:nth-child(2).animate-in,
+    .function-steps .step:nth-child(2).animate-in,
+    .cours-cards .cours_card:nth-child(2).animate-in{
+        animation-delay: 0.2s;
+    }
+
+    .cards .card:nth-child(3).animate-in,
+    .function-steps .step:nth-child(3).animate-in,
+    .cours-cards .cours_card:nth-child(3).animate-in{
+        animation-delay: 0.3s;
+    }
+
+    .cours-cards .cours_card:nth-child(4).animate-in{
+        animation-delay: 0.4s;
+    }
+
+    .cours-cards .cours_card:nth-child(5).animate-in{
+        animation-delay: 0.5s;
+    }
+
+    .cours-cards .cours_card:nth-child(6).animate-in{
+        animation-delay: 0.6s;
+    }
+
+
+    /* Responsive */
+
+    @media (max-width:768px) {
+        header nav{
+            display: none;
+        }
+
+        header .left h1{
+            font-size: 16px;
+        }
+
+        .hero{
+            margin-top: 30px;
+            padding: 0 15px;
+        }
+
+        .hero-cards-description{
+            padding: 10px;
+        }
+
+         .hero .hero-container .description{
+            text-justify: center;
+            width:90%;
+         }
+        .hero .hero-container .description p{
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .hero .hero-information{
+            flex-wrap: wrap;
+        }
+
+        .hero .hero-information .box{
+            margin-top:10px;
+            font-size: 12px;
+            padding: 6px;
+        }
+
+        .function{
+            margin-top: 30px;
+            padding: 15px;
+            color: var(--white);
+        }
+
+        .function h2{
+            font-size: 28px;
+        }
+
+        .function .function-description{
+            font-size: 11px;
+        }
+
+        .function .function-steps{
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .function .function-steps .step{
+            min-width: 280px;
+            padding: 12px;
+            margin: 15px 10px;
+        }
+
+        .function .function-steps .step i{
+            font-size: 18px;
+            padding: 8px;
+        }
+
+        .hero-cards{
+            padding: 15px;
+        }
+
+        .hero-cards h2{
+            font-size: 28px;
+        }
+
+        .hero-cards .cards .card{
+            width: 100%;
+            margin: 8px 0;
+        }
+
+        footer .footer-nav .link nav ul{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            font-size: 13px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        footer .footer-nav .link nav ul li{
+            font-size: 13px;
+            margin: 5px 10px !important;
+        }
+
+        footer .contact{
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-nav{display: block;}
+        .footer-nav .link{display: none;}
+
+        /* Featured Section Mobile */
+        .featured{
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .featured .featured-left{
+            margin: 0;
+            width: 100%;
+        }
+
+        .featured .featured-right{
+            display: none !important;
+        }
+
+        .featured .featured-left .featured-title{
+            font-size: 16px;
+        }
+
+        .featured .featured-left p{
+            font-size: 13px;
+        }
+
+        .featured .featured-badge{
+            margin: 0 auto;
+        }
+
+        .featured .featured-left .featured-slid-bar{
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .featured .featured-left .featured-slid-bar ul{
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .featured .featured-left .featured-slid-bar ul li{
+            margin: 5px;
+            font-size: 11px;
+        }
+
+        .cours{
+            padding: 15px;
+        }
+
+        .cours-title{
+            flex-direction: column;
+            margin: 15px;
+            padding: 0 10px;
+        }
+
+        .cours-title .cours-left{
+            width: 100%;
+        }
+
+        .cours .cours_card{
+            width: 100%;
+            max-width: 100%;
+            margin: 10px 0;
+        }
+    }
+
+    @media (max-width: 480px){
+        header .left h1{
+            font-size: 14px;
+        }
+
+        .hero .hero-container .logo img{
+            width: 50px;
+            height: 50px;
+        }
+
+        .hero-cards h2{
+            font-size: 22px;
+        }
+
+        .function h2{
+            font-size: 22px;
+        }
+
+        .function .function-steps{
+            flex-direction: column;
+        }
+
+        .function .function-steps .step{
+            width: 90%;
+            min-width: auto;
+        }
+
+        .hero-information .box{
+            width: 100%;
+            margin: 5px 0 !important;
+        }
+
+        .featured .featured-left .featured-title{
+            font-size: 14px;
+        }
+
+        .featured .featured-left p{
+            font-size: 12px;
+        }
+    }

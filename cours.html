@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Yacinthe Adi TINDANAHIRE">
-<meta name="description" content="Plateforme de lutte contre la désinformation au quotidien">
+    <meta name="description" content="Apprenez à détecter les fausses informations avec nos leçons interactives sur le fact-checking, les deepfakes et la vérification d'images">
+    <meta name="keywords" content="leçons désinformation, fact-checking, fake news, deepfakes, vérification images, éducation médias">
     <meta name="theme-color" content="#1a1a2e">
     <link rel="shortcut icon" href="/images/veraCheck.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="color-scheme" content="dark light">
     <!-- Open Graph (partage sur facebook et whatsApp)-->
-    <meta property="og:title" content="VeraCheck - Plateforme de lutte contre la désinformation">
-    <meta property="og:description" content="Plateforme de lutte contre la désinformation au quotidien">
+    <meta property="og:title" content="VeraCheck - Cours sur la détection de désinformation">
+    <meta property="og:description" content="Apprenez à identifier les fausses informations, deepfakes et manipulations avec nos 6 leçons complètes">
     <meta property="og:image" content="/images/illustration2.jpeg">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://veracheck.com/cours.html">
     <!-- Petit boost -->
-     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!-- Style css et titre -->
     <link rel="stylesheet" href="/css/style.css">
-    <title>VeraCheck - Plateforme de lutte contre la désinformation</title>
+    <title>Leçons VeraCheck - Apprendre à détecter les fausses informations</title>
 </head>
 <body>
 
@@ -45,7 +47,7 @@
         <div class="mobile-nav">
             <nav>
                 <ul>
-                    <li><a href="/index.html"><i class="fa-solid fa-home"></i></a></a></li>
+                    <li><a href="/index.html"><i class="fa-solid fa-home"></i></a></li>
                     <!-- <li><a href="/verifier.html"><i class="fa-solid fa-magnifying-glass"></i></a></li> -->
                     <li class="active"><a href="/cours.html"><i class="fa-solid fa-book"></i></a></li>
                     <li><a href="#"><i class="fas fa-sync-alt"></i></a></li>
@@ -100,15 +102,25 @@
                             <h3>Détection des images manipulées</h3>
                             <div class="level"><h4>Intermédiaire</h4></div>
                         </div>
-                        <div class="cour_desc">       
-                            <p>Apprenez à identifier les images retouchées ou sorties de leur contexte grâce à des techniques d'analyse visuelle et d'outils en ligne.</p>
+                        <div class="cour_desc">
+                            <p>Apprenez à identifier les images retouchées ou sorties de leur contexte grâce à des techniques d’analyse visuelle et d’outils en ligne.</p>
                             <button class="btn" onclick="toggleCard(this)">Voir le cours<i class="fa-solid fa-chevron-right"></i></button>
                         </div>
                         <div class="card-content">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Points clés:</h4>
                             <ul>
-                                <li>Verifie les ombres</li>
-                                <li>Analyse les details</li>
-                                <li>Verifie les sources</li>
+                                <li>Analysez les ombres et la cohérence de la lumière</li>
+                                <li>Vérifiez les textures et les bords des objets</li>
+                                <li>Utilisez la recherche inversée (Google Images, TinEye)</li>
+                                <li>Cherchez des signes de compression ou de pixelisation</li>
+                                <li>Vérifiez toujours la source et la date originale</li>
+                            </ul>
+                            <h4 style="color: var(--accent); margin-top: 15px; margin-bottom: 10px;">Outils recommandés:</h4>
+                            <ul>
+                                <li>Google Reverse Image Search</li>
+                                <li>TinEye (recherche d’images)</li>
+                                <li>FotoForensics (analyse de pixels)</li>
+                                <li>InVID (vérification de vidéos/images)</li>
                             </ul>
                         </div>
                     </div>
@@ -124,6 +136,24 @@
                             <p>Découvrez les bases pour vérifier les informations et éviter les fake news sur internet.</p>
                             <button class="btn" onclick="toggleCard(this)"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
+                        <div class="card-content">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Les 5 étapes essentielles:</h4>
+                            <ul>
+                                <li><strong>Vérifier la source:</strong> D’où vient l’information? Est-elle fiable?</li>
+                                <li><strong>Chercher des preuves:</strong> Existe-t-il des sources officielles?</li>
+                                <li><strong>Consulter les experts:</strong> Que disent les spécialistes du domaine?</li>
+                                <li><strong>Vérifier les dates:</strong> Est-ce que l’info n’est pas décontextualisée?</li>
+                                <li><strong>Comparer les sources:</strong> Plusieurs sources fiables le confirment-elles?</li>
+                            </ul>
+                            <h4 style="color: var(--accent); margin-top: 15px; margin-bottom: 10px;">Signes d’alerte:</h4>
+                            <ul>
+                                <li>Titres sensationnalistes ou émotionnels</li>
+                                <li>Absence de sources ou citations vagues</li>
+                                <li>Fautes d’orthographe nombreuses</li>
+                                <li>Images sans contexte ou sorties de contexte</li>
+                                <li>Appels à partager rapidement</li>
+                            </ul>
+                        </div>
                     </div>
 
 
@@ -136,6 +166,24 @@
                         <div class="cour_desc">
                             <p>Découvrez comment l’intelligence artificielle est utilisée pour créer de fausses informations.</p>
                             <button class="btn"  onclick="toggleCard(this)">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        <div class="card-content">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Types de manipulations par IA:</h4>
+                            <ul>
+                                <li><strong>Deepfakes vidéo:</strong> Vidéos synthétiques de personnalités publiques</li>
+                                <li><strong>Texte généré:</strong> Articles et messages créés par des modèles d’IA</li>
+                                <li><strong>Images synthétiques:</strong> Photos complètement créées (DALL-E, Midjourney)</li>
+                                <li><strong>Voix générées:</strong> Fichiers audio imités par IA</li>
+                                <li><strong>Bots sociaux:</strong> Comptes automatisés pour amplifier les fausses infos</li>
+                            </ul>
+                            <h4 style="color: var(--accent); margin-top: 15px; margin-bottom: 10px;">Comment les détecter:</h4>
+                            <ul>
+                                <li>Cherchez des artefacts visuels subtils (yeux, dents, cheveux anormaux)</li>
+                                <li>Vérifiez si le contenu apparaît soudainement sans historique</li>
+                                <li>Écoutez les voix (sons artificiels ou cassures)</li>
+                                <li>Utilisez des détecteurs de deepfakes en ligne</li>
+                                <li>Contactez directement les sources pour confirmer</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -150,6 +198,24 @@
                                  <p>Comprenez comment les fausses informations se propagent sur les réseaux sociaux.</p>
                                 <button class="btn" onclick="toggleCard(this)"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                             </div>
+                            <div class="card-content">
+                                <h4 style="color: var(--accent); margin-bottom: 10px;">Comment une info devient virale:</h4>
+                                <ul>
+                                    <li>Les émotions fortes (peur, colère, surprise) font plus partager</li>
+                                    <li>Les algorithmes favorisent le contenu engageant (même faux)</li>
+                                    <li>Les bulles de filtre créent des échos de confirmation</li>
+                                    <li>Les bots amplífient les messages (fausses interactions)</li>
+                                    <li>La vitesse domine la vérification (on partage avant de vérifier)</li>
+                                </ul>
+                                <h4 style="color: var(--accent); margin-top: 15px; margin-bottom: 10px;">Habitudes de protection:</h4>
+                                <ul>
+                                    <li>Vérifiez toujours avant de partager</li>
+                                    <li>Lisez l’article, pas juste le titre</li>
+                                    <li>Méfiez-vous des titres sensationnalistes</li>
+                                    <li>Vérifiez qui paie pour cette annonce (publicités)</li>
+                                    <li>Signalez le contenu faux aux plateformes</li>
+                                </ul>
+                            </div>
                     </div>
 
 
@@ -160,8 +226,26 @@
                             <div class="level"><h4>Intermédiaire</h4></div>
                         </div>
                         <div class="cour_desc">
-                            <p>Apprenez à évaluer la fiabilité des sites web et des auteurs d'information.</p>
+                            <p>Apprenez à évaluer la fiabilité des sites web et des auteurs d’information.</p>
                             <button class="btn"  onclick="toggleCard(this)"> Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        <div class="card-content">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Critères d’évaluation d’une source:</h4>
+                            <ul>
+                                <li><strong>Autorité:</strong> L’auteur a-t-il une expertise reconnue?</li>
+                                <li><strong>Transparence:</strong> Connaît-on les sources et le financement?</li>
+                                <li><strong>Mise à jour:</strong> Les informations sont-elles actuelles?</li>
+                                <li><strong>Corrections:</strong> La source corrige-t-elle ses erreurs?</li>
+                                <li><strong>Diversité:</strong> Y a-t-il plusieurs perspectives?</li>
+                            </ul>
+                            <h4 style="color: var(--accent); margin-top: 15px; margin-bottom: 10px;">Sources recommandées:</h4>
+                            <ul>
+                                <li>AFP, Reuters, AP News (agences officielles)</li>
+                                <li>Fact-checkers: Snopes, AFP Factuel, FactCheckEU</li>
+                                <li>Organismes publics officiels</li>
+                                <li>Publications scientifiques évaluées par des pairs</li>
+                                <li>Journalistes établis avec historique de vérification</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -175,11 +259,60 @@
                             <p>Apprenez à analyser les vidéos pour détecter les montages, deepfakes et manipulations visuelles.</p>
                             <button class="btn" onclick="toggleCard(this)">Voir le cours <i class="fa-solid fa-chevron-right"></i></button>
                         </div>
+                        <div class="card-content">
+                            <h4 style="color: var(--accent); margin-bottom: 10px;">Vérification de base:</h4>
+                            <ul>
+                                <li>Vérifiez la source et la date de la vidéo</li>
+                                <li>Utilisez la recherche inversée de frames clés</li>
+                                <li>Cherchez des zones de pixelisation ou de flou anormal</li>
+                                <li>Écoutez l’audio (sons anormaux, synchronisation lèvres)</li>
+                                <li>Vérifiez si d’autres sources rapportent l’événement</li>
+                            </ul>
+                            <h4 style="color: var(--accent); margin-top: 15px; margin-bottom: 10px;">Signes de montage ou deepfake:</h4>
+                            <ul>
+                                <li>Clignotements anormaux ou yeux louches</li>
+                                <li>Disparition d’objets en arrière-plan</li>
+                                <li>Désynchro audio-vidéo</li>
+                                <li>Lignes de visage ou cheveux étranges</li>
+                                <li>Contexte ne correspondant pas aux événements réels</li>
+                            </ul>
+                        </div>
                     </div>
 
             </div>
            
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-nav">
+                <p>©2026 VeraCheck-Outil de vérification d'information</p>
+                <div class="link">
+                    <nav>
+                       <ul>
+                         <li><a href="/index.html">Accueil</a></li>
+                         <li><a href="/cours.html">Leçons</a></li>
+                         <li><a href="/simulations.html">Simulations</a></li>
+                         <li><a href="#">A propos</a></li>
+                       </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-line"><hr></div>
+
+            <div class="contact">
+                <div class="contact-box-left">
+                    <h4>Contact WhatsApp</h4>
+                    <div class="number">+226 01 72 41 66</div>
+                </div>
+                <div class="contact-box-rigth">
+                    <i class="fa-regular fa-comment"></i>
+                    <a href="https://wa.me/22601724166">Discuter</a>
+                </div>
+            </div>
+
+            <p>©2026 VeraCheck-Tous droits réservés</p>
+        </footer>
 
         <script src="/Js/script.js"></script>
 </body>
