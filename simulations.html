@@ -4,958 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Yacinthe Adi TINDANAHIRE">
-    <meta name="description" content="Quiz et jeux interactifs VeraCheck pour tester vos connaissances en fact-checking et détection de désinformation">
-    <meta name="keywords" content="quiz désinformation, jeux fact-checking, simulations fake news, test vérification">
+    <meta name="description" content="Testez vos compétences en détection de fausses informations avec nos quizz interactifs et jeux éducatifs">
+    <meta name="keywords" content="quizz désinformation, jeux fact-checking, test fake news, simulation, éducation">
     <meta name="theme-color" content="#1a1a2e">
     <link rel="shortcut icon" href="/images/veraCheck.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="color-scheme" content="dark light">
-    <!-- Open Graph -->
-    <meta property="og:title" content="VeraCheck - Quiz et Simulations">
-    <meta property="og:description" content="Testez vos compétences en détection de désinformation avec nos quiz et jeux interactifs">
-    <meta property="og:image" content="/images/illustration2.jpeg">
+    <meta property="og:title" content="VeraCheck - Quizz & Simulations">
+    <meta property="og:description" content="Testez vos compétences en détection de désinformation avec nos jeux interactifs">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://veracheck.com/simulations.html">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="/css/style.css">
-    <style>
-        /* Quiz-specific styles */
-        .quiz-hero{
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-secondary) 100%);
-            animation: slideInUp 0.6s ease-out;
-        }
-
-        .quiz-hero h1{
-            font-size: 48px;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .quiz-hero p{
-            color: var(--text);
-            font-size: 16px;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .quiz-tabs{
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .quiz-tab-btn{
-            padding: 12px 30px;
-            border: 2px solid var(--accent);
-            background-color: transparent;
-            color: var(--text);
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s ease;
-        }
-
-        .quiz-tab-btn.active{
-            background-color: var(--accent);
-            color: var(--bg);
-        }
-
-        .quiz-tab-btn:hover{
-            transform: scale(1.05);
-        }
-
-        .quiz-container{
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .quiz-card{
-            background-color: var(--card);
-            border: 1px solid var(--accent);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        .quiz-question{
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--text);
-            margin-bottom: 25px;
-        }
-
-        .quiz-options{
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .quiz-option{
-            padding: 12px 20px;
-            border: 2px solid rgba(0, 194, 255, 0.2);
-            border-radius: 8px;
-            background-color: var(--bg);
-            color: var(--text);
-            cursor: pointer;
-            transition: 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .quiz-option input[type="radio"]{
-            margin-right: 15px;
-            cursor: pointer;
-        }
-
-        .quiz-option:hover{
-            border-color: var(--accent);
-            background-color: rgba(0, 194, 255, 0.1);
-            transform: translateX(5px);
-        }
-
-        .quiz-option.correct{
-            border-color: #16a34a;
-            background-color: rgba(22, 163, 74, 0.2);
-        }
-
-        .quiz-option.incorrect{
-            border-color: #dc2626;
-            background-color: rgba(220, 38, 38, 0.2);
-        }
-
-        .explanation{
-            margin-top: 15px;
-            padding: 15px;
-            background-color: rgba(0, 194, 255, 0.1);
-            border-left: 4px solid var(--accent);
-            border-radius: 5px;
-            color: var(--text);
-            font-size: 14px;
-            display: none;
-        }
-
-        .explanation.show{
-            display: block;
-            animation: slideInLeft 0.3s ease-out;
-        }
-
-        .quiz-button{
-            padding: 12px 30px;
-            background-color: var(--accent);
-            color: var(--bg);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            transition: 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .quiz-button:hover{
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 194, 255, 0.4);
-        }
-
-        .quiz-score{
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--card);
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-
-        .score-value{
-            font-size: 48px;
-            color: var(--accent);
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .score-feedback{
-            color: var(--text);
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .games-grid{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .game-card{
-            background-color: var(--card);
-            border: 1px solid var(--accent);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: 0.3s ease;
-            cursor: pointer;
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        .game-card:hover{
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 194, 255, 0.3);
-        }
-
-        .game-icon{
-            font-size: 48px;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-
-        .game-title{
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--text);
-            margin-bottom: 10px;
-        }
-
-        .game-description{
-            color: var(--text);
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .game-difficulty{
-            display: inline-block;
-            padding: 5px 12px;
-            background-color: rgba(0, 194, 255, 0.2);
-            border: 1px solid var(--accent);
-            border-radius: 15px;
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .game-btn{
-            padding: 10px 20px;
-            background-color: var(--accent);
-            color: var(--bg);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s ease;
-            width: 100%;
-        }
-
-        .game-btn:hover{
-            background-color: #00a8d8;
-        }
-
-        .modal{
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            overflow-y: auto;
-        }
-
-        .modal.show{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content{
-            background-color: var(--card);
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            border: 2px solid var(--accent);
-            position: relative;
-            animation: slideInUp 0.4s ease-out;
-        }
-
-        .modal-close{
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: var(--accent);
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        .progress-bar{
-            width: 100%;
-            height: 8px;
-            background-color: var(--bg);
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill{
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #00a8d8);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .leaderboard{
-            background-color: var(--card);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 20px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .leaderboard h3{
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .leaderboard-item{
-            display: flex;
-            justify-content: space-between;
-            padding: 12px;
-            border-bottom: 1px solid rgba(0, 194, 255, 0.2);
-            color: var(--text);
-        }
-
-        .leaderboard-item:last-child{
-            border-bottom: none;
-        }
-
-        .rank{
-            font-weight: bold;
-            color: var(--accent);
-            min-width: 30px;
-        }
-
-        @keyframes slideInUp{
-            from{
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to{
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp{
-            from{
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to{
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft{
-            from{
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to{
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @media (max-width: 768px){
-            .quiz-hero h1{
-                font-size: 32px;
-            }
-
-            .games-grid{
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content{
-                padding: 20px;
-            }
-        }
-    </style>
-    <title>VeraCheck - Quiz et Simulations</title>
+    <title>Simulations & Quizz VeraCheck - Test vos compétences</title>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="left">
-            <h1><span>Vera</span>Check</h1>
-        </div>
-        <div class="rigth">
-            <nav>
-                <ul>
-                    <li><a href="/index.html">Accueil</a></li>
-                    <li><a href="/cours.html">Leçons</a></li>
-                    <li class="active"><a href="/simulations.html">Simulations</a></li>
-                    <li><a href="#">A propos</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Mobile Nav -->
-    <div class="mobile-nav">
+<header>
+    <div class="left">
+        <h1><span>Vera</span>Check</h1>
+    </div>
+    <div class="rigth">
         <nav>
             <ul>
-                <li><a href="/index.html"><i class="fa-solid fa-home"></i></a></li>
-                <li><a href="/cours.html"><i class="fa-solid fa-book"></i></a></li>
-                <li class="active"><a href="/simulations.html"><i class="fas fa-sync-alt"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-circle-info"></i></a></li>
+                <li><a href="/index.html">Accueil</a></li>
+                <li><a href="/cours.html">Leçons</a></li>
+                <li class="active"><a href="/simulations.html">Simulation</a></li>
+                <li><a href="/about.html">A propos</a></li>
             </ul>
         </nav>
     </div>
+</header>
 
-    <!-- Quiz Hero Section -->
-    <section class="quiz-hero">
-        <h1>Testez Vos Compétences</h1>
-        <p>Participez à nos quiz et jeux interactifs pour améliorer vos connaissances en détection de désinformation.</p>
+<div class="mobile-nav">
+    <nav>
+        <ul>
+            <li><a href="/index.html"><i class="fa-solid fa-home"></i></a></li>
+            <li><a href="/cours.html"><i class="fa-solid fa-book"></i></a></li>
+            <li class="active"><a href="/simulations.html"><i class="fas fa-sync-alt"></i></a></li>
+            <li><a href="/about.html"><i class="fa-solid fa-circle-info"></i></a></li>
+        </ul>
+    </nav>
+</div>
 
-        <div class="quiz-tabs">
-            <button class="quiz-tab-btn active" onclick="switchTab('quiz')">
-                <i class="fa-solid fa-question-circle"></i> Quiz
-            </button>
-            <button class="quiz-tab-btn" onclick="switchTab('games')">
-                <i class="fa-solid fa-gamepad"></i> Jeux
-            </button>
+<section class="simulation-hero">
+    <div class="simulation-container">
+        <h1>Testez Vos <span>Compétences</span></h1>
+        <p>Mettez votre connaissance à l'épreuve et devenez expert en détection de désinformation</p>
+    </div>
+</section>
+
+<section class="mode-selection">
+    <div class="mode-cards">
+        <div class="mode-card" onclick="startQuiz('easy')">
+            <div class="mode-icon"><i class="fa-solid fa-leaf"></i></div>
+            <h3>Mode Débutant</h3>
+            <p>10 questions • Facile • 5-10 min</p>
+            <div class="mode-btn">Commencer <i class="fa-solid fa-arrow-right"></i></div>
         </div>
-    </section>
-
-    <!-- Quiz Section -->
-    <section id="quiz-section" class="quiz-container">
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+        <div class="mode-card" onclick="startQuiz('medium')">
+            <div class="mode-icon"><i class="fa-solid fa-shield"></i></div>
+            <h3>Mode Intermédiaire</h3>
+            <p>15 questions • Moyen • 10-15 min</p>
+            <div class="mode-btn">Commencer <i class="fa-solid fa-arrow-right"></i></div>
         </div>
-        <div id="quiz-content"></div>
-        <div id="quiz-score" class="quiz-score" style="display: none;">
-            <h3>Quiz Terminé!</h3>
-            <div class="score-value" id="score-display">0/0</div>
-            <div class="score-feedback" id="score-feedback"></div>
-            <button class="quiz-button" onclick="restartQuiz()">Recommencer le quiz</button>
-            <button class="quiz-button" onclick="switchTab('games')" style="background-color: var(--accent-hover); margin-left: 10px;">Essayer les jeux</button>
-        </div>
-    </section>
-
-    <!-- Games Section -->
-    <section id="games-section" class="games-grid" style="display: none;">
-        <div class="game-card" onclick="startGame('spot-fake')">
-            <div class="game-icon"><i class="fa-solid fa-images"></i></div>
-            <h3 class="game-title">Repérez le Fake</h3>
-            <p class="game-description">Identifiez l'image manipulée ou le deepfake parmi 3 images</p>
-            <div class="game-difficulty">Intermédiaire</div>
-            <button class="game-btn">Jouer</button>
-        </div>
-
-        <div class="game-card" onclick="startGame('source-reliability')">
-            <div class="game-icon"><i class="fa-solid fa-newspaper"></i></div>
-            <h3 class="game-title">Fiabilité Source</h3>
-            <p class="game-description">Évaluez la fiabilité de différentes sources d'information</p>
-            <div class="game-difficulty">Intermédiaire</div>
-            <button class="game-btn">Jouer</button>
-        </div>
-
-        <div class="game-card" onclick="startGame('viral-checker')">
-            <div class="game-icon"><i class="fa-solid fa-trending-up"></i></div>
-            <h3 class="game-title">Viral ou Pas?</h3>
-            <p class="game-description">Prédisez si une information deviendra virale</p>
-            <div class="game-difficulty">Facile</div>
-            <button class="game-btn">Jouer</button>
-        </div>
-    </section>
-
-    <!-- Leaderboard -->
-    <div class="leaderboard" id="leaderboard-section">
-        <h3>🏆 Classement Local</h3>
-        <div id="leaderboard-content">
-            <p style="text-align: center; color: var(--text);">Commencez un quiz ou un jeu pour voir votre score!</p>
+        <div class="mode-card" onclick="startQuiz('hard')">
+            <div class="mode-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>Mode Expert</h3>
+            <p>20 questions • Difficile • 15-20 min</p>
+            <div class="mode-btn">Commencer <i class="fa-solid fa-arrow-right"></i></div>
         </div>
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-nav">
-            <p>©2026 VeraCheck-Outil de vérification d'information</p>
-            <div class="link">
-                <nav>
-                   <ul>
-                     <li><a href="/index.html">Accueil</a></li>
-                     <li><a href="/cours.html">Leçons</a></li>
-                     <li><a href="/simulations.html">Simulations</a></li>
-                     <li><a href="#">A propos</a></li>
-                   </ul>
-                </nav>
+<section id="quizContainer" class="quiz-container hide">
+    <div class="quiz-header">
+        <div class="quiz-progress">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <span id="questionCounter">1/10</span>
+        </div>
+        <div class="quiz-timer"><i class="fa-solid fa-clock"></i><span id="timerDisplay">00:00</span></div>
+        <button class="quiz-exit" onclick="exitQuiz()"><i class="fa-solid fa-times"></i></button>
+    </div>
+    <div class="quiz-content">
+        <div id="questionCard" class="question-card"></div>
+    </div>
+</section>
+
+<section id="resultsContainer" class="results-container hide">
+    <div class="results-card">
+        <div class="results-header">
+            <div class="results-score" id="finalScore"></div>
+            <h2 id="resultTitle"></h2>
+        </div>
+        <div class="results-details">
+            <div class="result-stat">
+                <i class="fa-solid fa-check"></i>
+                <div><h4>Bonnes réponses</h4><p id="correctCount">0/0</p></div>
+            </div>
+            <div class="result-stat">
+                <i class="fa-solid fa-xmark"></i>
+                <div><h4>Mauvaises réponses</h4><p id="wrongCount">0/0</p></div>
+            </div>
+            <div class="result-stat">
+                <i class="fa-solid fa-hourglass-end"></i>
+                <div><h4>Temps</h4><p id="totalTime">00:00</p></div>
             </div>
         </div>
-        <div class="footer-line"><hr></div>
-
-        <div class="contact">
-            <div class="contact-box-left">
-                <h4>Contact WhatsApp</h4>
-                <div class="number">+226 01 72 41 66</div>
-            </div>
-            <div class="contact-box-rigth">
-                <i class="fa-regular fa-comment"></i>
-                <a href="https://wa.me/22601724166">Discuter</a>
-            </div>
+        <div id="feedbackSection" class="feedback-section"></div>
+        <div class="results-actions">
+            <button class="btn-primary" onclick="location.reload()">Recommencer</button>
+            <button class="btn-secondary" onclick="goHome()">Retour à l'accueil</button>
         </div>
+    </div>
+</section>
 
-        <p>©2026 VeraCheck-Tous droits réservés</p>
-    </footer>
+<section class="leaderboard-section">
+    <h2>🏆 Classement Local</h2>
+    <div id="leaderboard" class="leaderboard"></div>
+</section>
 
-    <script src="/Js/script.js"></script>
-    <script>
-        // Quiz Data
-        const quizzes = [
-            {
-                id: 1,
-                title: "Quiz Fact-checking Débutant",
-                difficulty: "beginner",
-                questions: [
-                    {
-                        question: "Quel est le premier réflexe à avoir en face d'une information douteuse?",
-                        options: [
-                            { text: "La partager immédiatement", correct: false },
-                            { text: "Vérifier la source", correct: true },
-                            { text: "Ignorer l'information", correct: false },
-                            { text: "La croire automatiquement", correct: false }
-                        ],
-                        explanation: "Avant tout, il faut vérifier la source de l'information pour évaluer sa fiabilité."
-                    },
-                    {
-                        question: "Quel site est une référence pour le fact-checking?",
-                        options: [
-                            { text: "Facebook", correct: false },
-                            { text: "AFP Factuel", correct: true },
-                            { text: "Twitter", correct: false },
-                            { text: "TikTok", correct: false }
-                        ],
-                        explanation: "AFP Factuel est un service officiel de vérification des faits par Agence France-Presse."
-                    },
-                    {
-                        question: "Une image partagée massivement doit toujours être...",
-                        options: [
-                            { text: "Partagée plus vite", correct: false },
-                            { text: "Vérifiée avant de la partager", correct: true },
-                            { text: "Ignorée", correct: false },
-                            { text: "Modifiée", correct: false }
-                        ],
-                        explanation: "Plus une image est partagée, plus il est important de vérifier son authenticité et son contexte."
-                    }
-                ]
-            },
-            {
-                id: 2,
-                title: "Quiz Images Manipulées",
-                difficulty: "intermediate",
-                questions: [
-                    {
-                        question: "Quel est le premier signe à vérifier dans une image?",
-                        options: [
-                            { text: "Les ombres et la lumière", correct: true },
-                            { text: "La date du fichier", correct: false },
-                            { text: "La taille du fichier", correct: false },
-                            { text: "L'extension du fichier", correct: false }
-                        ],
-                        explanation: "Les ombres et la lumière révèlent souvent les incohérences dans les images manipulées."
-                    },
-                    {
-                        question: "Quel outil permet de faire une recherche d'image inversée?",
-                        options: [
-                            { text: "Google Images", correct: true },
-                            { text: "Paint", correct: false },
-                            { text: "Notepad", correct: false },
-                            { text: "Word", correct: false }
-                        ],
-                        explanation: "Google Images offre une fonction de recherche inversée très utile pour vérifier les sources d'images."
-                    },
-                    {
-                        question: "Les bords flous d'une image indiquent souvent...",
-                        options: [
-                            { text: "Une bonne qualité", correct: false },
-                            { text: "Un montage possible", correct: true },
-                            { text: "Une image originale", correct: false },
-                            { text: "Rien d'important", correct: false }
-                        ],
-                        explanation: "Les bords flous ou pixelisés sont un signe courant de manipulation d'image."
-                    }
-                ]
-            },
-            {
-                id: 3,
-                title: "Quiz Deepfakes et IA",
-                difficulty: "advanced",
-                questions: [
-                    {
-                        question: "Qu'est-ce qu'un deepfake?",
-                        options: [
-                            { text: "Une image de mauvaise qualité", correct: false },
-                            { text: "Une vidéo synthétique créée par IA", correct: true },
-                            { text: "Un montage simple", correct: false },
-                            { text: "Une photo floue", correct: false }
-                        ],
-                        explanation: "Un deepfake est une vidéo créée ou modifiée par IA pour imiter une personne réelle de manière très réaliste."
-                    },
-                    {
-                        question: "Comment détecter un deepfake?",
-                        options: [
-                            { text: "En regardant les yeux et le clignotement", correct: true },
-                            { text: "Impossible à détecter", correct: false },
-                            { text: "En vérifiant la date", correct: false },
-                            { text: "En écoutant le son", correct: false }
-                        ],
-                        explanation: "Les clignotements anormaux ou les artefacts autour des yeux sont des signes révélateurs."
-                    },
-                    {
-                        question: "Quel modèle d'IA peut créer des images synthétiques convaincantes?",
-                        options: [
-                            { text: "DALL-E", correct: true },
-                            { text: "Excel", correct: false },
-                            { text: "Notepad", correct: false },
-                            { text: "Paint", correct: false }
-                        ],
-                        explanation: "DALL-E est un modèle d'IA capable de générer des images synthétiques très réalistes."
-                    }
-                ]
-            },
-            {
-                id: 4,
-                title: "Quiz Réseaux Sociaux",
-                difficulty: "intermediate",
-                questions: [
-                    {
-                        question: "Les algorithmes des réseaux sociaux favorisent...",
-                        options: [
-                            { text: "Le contenu fiable et ennuyeux", correct: false },
-                            { text: "Le contenu engageant, même s'il est faux", correct: true },
-                            { text: "Uniquement les posts publics", correct: false },
-                            { text: "Le contenu lent et réfléchi", correct: false }
-                        ],
-                        explanation: "Les algorithmes priorisent l'engagement, ce qui favorise les contenus sensationnalistes."
-                    },
-                    {
-                        question: "Qu'est-ce qu'une bulle de filtre?",
-                        options: [
-                            { text: "Un filtre photo", correct: false },
-                            { text: "Une zone où vous ne voyez que ce qui confirme vos croyances", correct: true },
-                            { text: "Un filtre de spam", correct: false },
-                            { text: "Une publicité", correct: false }
-                        ],
-                        explanation: "Les bulles de filtre créent des échos où vous ne voyez que des contenus qui confirment votre opinion."
-                    },
-                    {
-                        question: "Comment identifier un bot sur les réseaux?",
-                        options: [
-                            { text: "En regardant son profil et ses modèles d'interaction", correct: true },
-                            { text: "C'est impossible", correct: false },
-                            { text: "En regardant sa photo de profil", correct: false },
-                            { text: "En vérifiant son nom", correct: false }
-                        ],
-                        explanation: "Les bots ont souvent des profils incomplets, des horaires de publication étranges, ou amplifient massivement certains messages."
-                    }
-                ]
-            },
-            {
-                id: 5,
-                title: "Quiz Sources Fiables",
-                difficulty: "intermediate",
-                questions: [
-                    {
-                        question: "Une source fiable doit être...",
-                        options: [
-                            { text: "Transparente sur ses sources", correct: true },
-                            { text: "Populaire sur les réseaux", correct: false },
-                            { text: "Gratuite", correct: false },
-                            { text: "Facile à comprendre", correct: false }
-                        ],
-                        explanation: "Une source fiable explique ses sources et montre d'où elle tire ses informations."
-                    },
-                    {
-                        question: "Quel type de source est généralement le plus fiable?",
-                        options: [
-                            { text: "Un blog personnel", correct: false },
-                            { text: "Une publication scientifique évaluée par des pairs", correct: true },
-                            { text: "Un post sur TikTok", correct: false },
-                            { text: "Un email reçu", correct: false }
-                        ],
-                        explanation: "Les publications scientifiques évaluées par des pairs sont soumises à un processus rigoureux de vérification."
-                    },
-                    {
-                        question: "Si vous trouvez une erreur sur un site, cela indique...",
-                        options: [
-                            { text: "Que le site n'est pas fiable", correct: false },
-                            { text: "Que le site est fiable s'il corrige l'erreur", correct: true },
-                            { text: "Que l'erreur est importante", correct: false },
-                            { text: "Qu'il ne faut plus le lire", correct: false }
-                        ],
-                        explanation: "Une source fiable reconnaît et corrige ses erreurs. C'est un bon signe!"
-                    }
-                ]
-            },
-            {
-                id: 6,
-                title: "Quiz Vidéos et Montages",
-                difficulty: "intermediate",
-                questions: [
-                    {
-                        question: "Un bon indice de deepfake vidéo est...",
-                        options: [
-                            { text: "La résolution vidéo", correct: false },
-                            { text: "Les clignotements anormaux", correct: true },
-                            { text: "La durée de la vidéo", correct: false },
-                            { text: "Le format vidéo", correct: false }
-                        ],
-                        explanation: "Les deepfakes souffrent souvent d'artefacts comme des clignotements anormaux ou des transitions non naturelles."
-                    },
-                    {
-                        question: "Comment vérifier si une vidéo est sortie de son contexte?",
-                        options: [
-                            { text: "En la regardant une seule fois", correct: false },
-                            { text: "En recherchant les événements réels du même jour", correct: true },
-                            { text: "En regardant la date du fichier", correct: false },
-                            { text: "C'est impossible", correct: false }
-                        ],
-                        explanation: "Vous devez vérifier si l'événement dans la vidéo a réellement eu lieu à cette date."
-                    },
-                    {
-                        question: "Un montage vidéo de faible qualité indique souvent...",
-                        options: [
-                            { text: "Une mauvaise caméra", correct: false },
-                            { text: "Une possible manipulation", correct: true },
-                            { text: "Une bonne source", correct: false },
-                            { text: "Rien de particulier", correct: false }
-                        ],
-                        explanation: "Une mauvaise qualité vidéo peut cacher les traces de montage ou de manipulation."
-                    }
-                ]
-            }
-        ];
+<footer>
+    <div class="footer-nav">
+        <p>©2026 VeraCheck-Outil de vérification d'information</p>
+        <div class="link"><nav><ul>
+            <li><a href="/index.html">Accueil</a></li>
+            <li><a href="/cours.html">Leçons</a></li>
+            <li><a href="/simulations.html">Simulations</a></li>
+            <li><a href="/about.html">A propos</a></li>
+        </ul></nav></div>
+    </div>
+    <div class="footer-line"><hr></div>
+    <div class="contact">
+        <div class="contact-box-left"><h4>Contact WhatsApp</h4><div class="number">+226 01 72 41 66</div></div>
+        <div class="contact-box-rigth"><i class="fa-regular fa-comment"></i><a href="https://wa.me/22601724166">Discuter</a></div>
+    </div>
+    <p>©2026 VeraCheck-Tous droits réservés</p>
+</footer>
 
-        let currentQuizIndex = 0;
-        let userAnswers = [];
-        let quizStarted = false;
-
-        // Initialize quiz
-        function initQuiz() {
-            renderQuizList();
-        }
-
-        function renderQuizList() {
-            const quizContent = document.getElementById('quiz-content');
-            quizContent.innerHTML = '<h2 style="color: var(--accent); text-align: center; margin-bottom: 30px;">Sélectionnez un Quiz</h2>';
-
-            const quizListHTML = quizzes.map((quiz, index) => `
-                <div class="quiz-card" style="cursor: pointer; text-align: center;" onclick="startQuiz(${index})">
-                    <h3 style="color: var(--accent); margin-bottom: 10px;">${quiz.title}</h3>
-                    <p style="color: var(--text); margin-bottom: 10px;">${quiz.questions.length} questions</p>
-                    <span class="game-difficulty">${getDifficultyLabel(quiz.difficulty)}</span>
-                </div>
-            `).join('');
-
-            quizContent.innerHTML += quizListHTML;
-        }
-
-        function getDifficultyLabel(difficulty) {
-            const labels = {
-                'beginner': 'Débutant',
-                'intermediate': 'Intermédiaire',
-                'advanced': 'Avancé'
-            };
-            return labels[difficulty] || difficulty;
-        }
-
-        function startQuiz(index) {
-            currentQuizIndex = index;
-            userAnswers = [];
-            quizStarted = true;
-            renderQuizQuestion(0);
-        }
-
-        function renderQuizQuestion(questionIndex) {
-            const quiz = quizzes[currentQuizIndex];
-            const question = quiz.questions[questionIndex];
-            const quizContent = document.getElementById('quiz-content');
-            const progressFill = document.getElementById('progressFill');
-
-            const progress = ((questionIndex + 1) / quiz.questions.length) * 100;
-            progressFill.style.width = progress + '%';
-
-            let html = `
-                <div class="quiz-card">
-                    <h3 style="color: var(--accent); margin-bottom: 10px;">Question ${questionIndex + 1}/${quiz.questions.length}</h3>
-                    <p class="quiz-question">${question.question}</p>
-                    <div class="quiz-options">
-            `;
-
-            question.options.forEach((option, optIndex) => {
-                html += `
-                    <label class="quiz-option">
-                        <input type="radio" name="quiz-option" value="${optIndex}" onchange="answerQuestion(${questionIndex}, ${optIndex})">
-                        <span>${option.text}</span>
-                    </label>
-                `;
-            });
-
-            html += `
-                    </div>
-                    <div class="explanation" id="explanation-${questionIndex}"></div>
-                </div>
-            `;
-
-            quizContent.innerHTML = html;
-        }
-
-        function answerQuestion(questionIndex, optionIndex) {
-            const quiz = quizzes[currentQuizIndex];
-            const question = quiz.questions[questionIndex];
-            const selectedOption = question.options[optionIndex];
-            const explanationDiv = document.getElementById(`explanation-${questionIndex}`);
-
-            userAnswers[questionIndex] = { optionIndex, correct: selectedOption.correct };
-
-            const optionLabels = document.querySelectorAll('.quiz-option');
-            optionLabels.forEach((label, idx) => {
-                label.classList.remove('correct', 'incorrect');
-                if (idx === optionIndex) {
-                    if (selectedOption.correct) {
-                        label.classList.add('correct');
-                    } else {
-                        label.classList.add('incorrect');
-                        const correctIdx = question.options.findIndex(o => o.correct);
-                        optionLabels[correctIdx].classList.add('correct');
-                    }
-                }
-            });
-
-            explanationDiv.innerHTML = `<strong>💡 Explication:</strong> ${selectedOption.explanation}`;
-            explanationDiv.classList.add('show');
-
-            setTimeout(() => {
-                if (questionIndex < quiz.questions.length - 1) {
-                    renderQuizQuestion(questionIndex + 1);
-                } else {
-                    setTimeout(showQuizScore, 1500);
-                }
-            }, 2000);
-        }
-
-        function showQuizScore() {
-            const quiz = quizzes[currentQuizIndex];
-            const correct = userAnswers.filter(a => a && a.correct).length;
-            const total = quiz.questions.length;
-            const percentage = Math.round((correct / total) * 100);
-
-            document.getElementById('quiz-content').style.display = 'none';
-            document.getElementById('quiz-score').style.display = 'block';
-            document.getElementById('score-display').textContent = `${correct}/${total}`;
-
-            let feedback = '';
-            if (percentage === 100) feedback = '🎉 Parfait! Vous maîtrisez ce sujet!';
-            else if (percentage >= 80) feedback = '🌟 Excellent travail!';
-            else if (percentage >= 60) feedback = '👍 Bien! Continuez vos efforts.';
-            else if (percentage >= 40) feedback = '📚 Relisez les leçons pour mieux comprendre.';
-            else feedback = '💪 Gardez l\'esprit! La pratique fait la perfection.';
-
-            document.getElementById('score-feedback').innerHTML = `${feedback}<br>Score: ${percentage}%`;
-            saveScore('quiz', quiz.title, correct, total);
-            updateLeaderboard();
-        }
-
-        function restartQuiz() {
-            document.getElementById('quiz-content').style.display = 'block';
-            document.getElementById('quiz-score').style.display = 'none';
-            document.getElementById('progressFill').style.width = '0%';
-            renderQuizList();
-            quizStarted = false;
-        }
-
-        function switchTab(tab) {
-            const quizSection = document.getElementById('quiz-section');
-            const gamesSection = document.getElementById('games-section');
-            const buttons = document.querySelectorAll('.quiz-tab-btn');
-
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.closest('.quiz-tab-btn').classList.add('active');
-
-            if (tab === 'quiz') {
-                quizSection.style.display = 'block';
-                gamesSection.style.display = 'none';
-                if (!quizStarted) renderQuizList();
-            } else {
-                quizSection.style.display = 'none';
-                gamesSection.style.display = 'grid';
-            }
-        }
-
-        function startGame(gameType) {
-            alert(`Jeu: ${gameType}\n\nDésolé, les jeux interactifs seront bientôt disponibles!\nPour l'instant, concentrez-vous sur les quiz pour améliorer vos compétences.`);
-        }
-
-        function saveScore(type, name, score, total) {
-            let scores = JSON.parse(localStorage.getItem('veracheck-scores') || '[]');
-            scores.push({
-                type,
-                name,
-                score,
-                total,
-                percentage: Math.round((score / total) * 100),
-                date: new Date().toLocaleDateString()
-            });
-            localStorage.setItem('veracheck-scores', JSON.stringify(scores));
-        }
-
-        function updateLeaderboard() {
-            let scores = JSON.parse(localStorage.getItem('veracheck-scores') || '[]');
-            const leaderboardContent = document.getElementById('leaderboard-content');
-
-            if (scores.length === 0) {
-                leaderboardContent.innerHTML = '<p style="text-align: center; color: var(--text);">Aucun score pour le moment. Commencez un quiz!</p>';
-                return;
-            }
-
-            scores.sort((a, b) => b.percentage - a.percentage);
-            const top10 = scores.slice(0, 10);
-
-            let html = '';
-            top10.forEach((score, index) => {
-                html += `
-                    <div class="leaderboard-item">
-                        <span class="rank">#${index + 1}</span>
-                        <span>${score.name.substring(0, 30)}</span>
-                        <span><strong>${score.percentage}%</strong> (${score.score}/${score.total})</span>
-                    </div>
-                `;
-            });
-
-            leaderboardContent.innerHTML = html;
-        }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', () => {
-            initQuiz();
-            updateLeaderboard();
-        });
-    </script>
+<script src="/Js/quiz.js"></script>
+<script src="/Js/script.js"></script>
 </body>
 </html>
